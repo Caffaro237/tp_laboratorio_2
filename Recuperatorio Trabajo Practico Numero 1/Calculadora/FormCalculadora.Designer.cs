@@ -156,6 +156,7 @@ namespace MiCalculadora
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora de Facundo Caffaro 2°C";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMiCalculadora_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMiCalculadora_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

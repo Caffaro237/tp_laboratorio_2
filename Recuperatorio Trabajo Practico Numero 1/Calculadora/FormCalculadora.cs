@@ -41,6 +41,16 @@ namespace MiCalculadora
         #region Eventos
 
         /// <summary>
+        /// Evento de carga del Formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmMiCalculadora_Load(object sender, EventArgs e)
+        {
+            this.Limpiar();
+        }
+
+        /// <summary>
         /// Evento de cierre del Formulario preguntando si se quiere cerrar o no
         /// </summary>
         /// <param name="sender"></param>
