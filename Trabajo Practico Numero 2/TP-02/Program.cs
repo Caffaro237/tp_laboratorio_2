@@ -16,7 +16,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.Title = "Trabajo Practico, Caffaro Facundo";
+            Console.Title = "Trabajo Practico Numero 2, Caffaro Facundo";
 
             Taller taller = new Taller(6);
 
