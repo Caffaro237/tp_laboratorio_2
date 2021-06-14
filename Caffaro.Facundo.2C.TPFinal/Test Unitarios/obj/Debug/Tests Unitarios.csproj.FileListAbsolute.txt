@@ -1,0 +1,16 @@
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Test Unitarios.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Test Unitarios.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Entidades.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Entidades.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\obj\Debug\Tests Unitarios.csproj.AssemblyReference.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\obj\Debug\Tests Unitarios.csproj.CoreCompileInputs.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\obj\Debug\Tests Unitarios.csproj.CopyComplete
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\obj\Debug\Test Unitarios.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Test Unitarios\obj\Debug\Test Unitarios.pdb
