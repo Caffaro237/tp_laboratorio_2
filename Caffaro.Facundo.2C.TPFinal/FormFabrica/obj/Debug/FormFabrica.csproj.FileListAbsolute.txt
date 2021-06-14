@@ -13,3 +13,18 @@ D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPF
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.pdb
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmNotebooks.resources
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmPCEscritorio.resources
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.exe.config
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.exe
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.pdb
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\Entidades.dll
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\Entidades.pdb
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.AssemblyReference.cache
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmFabrica.resources
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmNotebooks.resources
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmPCEscritorio.resources
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.Properties.Resources.resources
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.GenerateResource.cache
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.CoreCompileInputs.cache
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.CopyComplete
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.exe
+C:\Users\Facu\Desktop\tp_laboratorio_2\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.pdb
