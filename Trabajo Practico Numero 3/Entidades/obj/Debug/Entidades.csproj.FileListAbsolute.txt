@@ -1,0 +1,6 @@
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\bin\Debug\Entidades.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\bin\Debug\Entidades.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\obj\Debug\Entidades.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\Entidades\obj\Debug\Entidades.pdb
