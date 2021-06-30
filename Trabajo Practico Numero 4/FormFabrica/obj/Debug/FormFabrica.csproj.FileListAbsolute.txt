@@ -1,0 +1,15 @@
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.exe.config
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.exe
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\FormFabrica.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\Entidades.dll
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\bin\Debug\Entidades.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.AssemblyReference.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmFabrica.resources
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.Properties.Resources.resources
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.GenerateResource.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.CoreCompileInputs.cache
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.csproj.CopyComplete
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.exe
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmNotebooks.resources
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\Soluciones\Caffaro.Facundo.2C.TPFinal\FormFabrica\obj\Debug\FormFabrica.FrmPCEscritorio.resources
