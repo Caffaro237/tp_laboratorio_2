@@ -25,14 +25,16 @@ namespace FormFabrica
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            FrmNotebooks formNotebooks = new FrmNotebooks();
-            formNotebooks.ShowDialog();
+            this.LeerSQL(false);
+            //FrmNotebooks formNotebooks = new FrmNotebooks();
+            //formNotebooks.ShowDialog();
         }
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
-            formPCEscritorio.ShowDialog();
+            this.LeerSQL(true);
+            //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
+            //formPCEscritorio.ShowDialog();
         }
 
         private void btnGuardarArchivo_Click(object sender, EventArgs e)
@@ -68,6 +70,25 @@ namespace FormFabrica
                 MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        public void LeerSQL(bool PCoNotebook)
+        {
+            ProductoDAO DAO = new ProductoDAO();
+
+            try
+            {
+                List<Producto> listaProducto = DAO.GetProductos(PCoNotebook);
+
+                foreach (Producto p in listaProducto)
+                {
+                    richTextBox1.Text = p.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

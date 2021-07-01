@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Producto
+    public class Producto
     {
         #region Atributos
 
+        private int id;
         private string marca;
         private string CPU;
         private string GPU;
@@ -30,8 +31,9 @@ namespace Entidades
         /// <param name="GPU"></param>
         /// <param name="cantidadRAM"></param>
         /// <param name="cantidadAlmacenamiento"></param>
-        public Producto(string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
+        public Producto(int id, string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
         {
+            this.id = id;
             this.marca = marca;
             this.CPU = CPU;
             this.GPU = GPU;
@@ -46,6 +48,70 @@ namespace Entidades
             {
                 this.cantidadAlmacenamiento = cantidadAlmacenamiento;
                 gigaOTera = false;
+            }
+        }
+
+        #endregion
+
+        #region Propiedades
+
+        public string Marca
+        {
+            get
+            {
+                return this.marca;
+            }
+            set
+            {
+                this.marca = value;
+            }
+        }
+
+        public string Cpu
+        {
+            get
+            {
+                return this.CPU;
+            }
+            set
+            {
+                this.CPU = value;
+            }
+        }
+
+        public string Gpu
+        {
+            get
+            {
+                return this.GPU;
+            }
+            set
+            {
+                this.GPU = value;
+            }
+        }
+
+        public int CantidadRAM
+        {
+            get
+            {
+                return this.cantidadRAM;
+            }
+            set
+            {
+                this.cantidadRAM = value;
+            }
+        }
+
+        public int CantidadAlmacenamiento
+        {
+            get
+            {
+                return this.cantidadAlmacenamiento;
+            }
+            set
+            {
+                this.cantidadAlmacenamiento = value;
             }
         }
 
