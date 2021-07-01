@@ -62,11 +62,11 @@ namespace Entidades
                         double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
                         int.TryParse(oDr["Hertz"].ToString(), out hertz);
 
-                        lista.Add(Fabrica.Producto = new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
+                        lista.Add(new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
                     }
                     else
                     {
-                        lista.Add(Fabrica.Producto = new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento));
+                        lista.Add(new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento));
                     }
 
                 }

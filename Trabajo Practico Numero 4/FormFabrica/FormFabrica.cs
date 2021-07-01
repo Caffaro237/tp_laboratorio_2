@@ -26,6 +26,8 @@ namespace FormFabrica
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
             this.LeerSQL(false);
+
+            this.LeerSQL(true);
             //FrmNotebooks formNotebooks = new FrmNotebooks();
             //formNotebooks.ShowDialog();
         }
@@ -80,11 +82,23 @@ namespace FormFabrica
             try
             {
                 List<Producto> listaProducto = DAO.GetProductos(PCoNotebook);
+                StringBuilder sb = new StringBuilder();
 
                 foreach (Producto p in listaProducto)
                 {
-                    richTextBox1.Text = p.ToString();
+                    if (p is Notebook)
+                    {
+                        sb.AppendLine("****** NOTEBOOK ******");
+                        sb.AppendLine(p.ToString());
+                    }
+                    else if (p is PCEscritorio)
+                    {
+                        sb.AppendLine("****** PC ESCRITORIO ******");
+                        sb.AppendLine(p.ToString());
+                    }
                 }
+
+                richTextBox1.Text += sb.ToString();
             }
             catch (Exception ex)
             {
