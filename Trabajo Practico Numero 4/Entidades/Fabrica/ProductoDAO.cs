@@ -11,6 +11,7 @@ namespace Entidades
     {
         private SqlConnection conexion;
         private SqlCommand comando;
+        List<Producto> lista;
 
         public ProductoDAO()
         {
@@ -18,12 +19,12 @@ namespace Entidades
             this.comando = new SqlCommand();
 
             this.comando.Connection = this.conexion;
+
+            lista = new List<Producto>();
         }
 
         public List<Producto> GetProductos(bool PCoNotebook)
         {
-            List<Producto> lista = new List<Producto>();
-
             if(PCoNotebook)
             {
                 comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
@@ -62,10 +63,12 @@ namespace Entidades
                         double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
                         int.TryParse(oDr["Hertz"].ToString(), out hertz);
 
+                        Fabrica.Producto = new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
                         lista.Add(new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
                     }
                     else
                     {
+                        Fabrica.Producto = new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento);
                         lista.Add(new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento));
                     }
 

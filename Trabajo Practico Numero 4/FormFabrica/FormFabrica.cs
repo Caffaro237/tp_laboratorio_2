@@ -13,9 +13,13 @@ namespace FormFabrica
 {
     public partial class FrmFabrica : Form
     {
+        List<Producto> listaProductosDAO;
+        ProductoDAO ProductoDAO;
+
         public FrmFabrica()
         {
             InitializeComponent();
+            ProductoDAO = new ProductoDAO();
         }
 
         private void FrmFabrica_Load(object sender, EventArgs e)
@@ -25,16 +29,22 @@ namespace FormFabrica
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
+            /*richTextBox1.Text = "Hola";
+
+            richTextBox1.SelectAll();
+            richTextBox1.SelectedText = "";*/
+
             this.LeerSQL(false);
 
-            this.LeerSQL(true);
+            //this.LeerSQL(true);
             //FrmNotebooks formNotebooks = new FrmNotebooks();
             //formNotebooks.ShowDialog();
         }
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            this.LeerSQL(true);
+            richTextBox1.Clear();
+            //this.LeerSQL(true);
             //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             //formPCEscritorio.ShowDialog();
         }
@@ -77,14 +87,13 @@ namespace FormFabrica
 
         public void LeerSQL(bool PCoNotebook)
         {
-            ProductoDAO DAO = new ProductoDAO();
+            listaProductosDAO = ProductoDAO.GetProductos(PCoNotebook);
 
             try
             {
-                List<Producto> listaProducto = DAO.GetProductos(PCoNotebook);
                 StringBuilder sb = new StringBuilder();
 
-                foreach (Producto p in listaProducto)
+                foreach (Producto p in listaProductosDAO)
                 {
                     if (p is Notebook)
                     {
@@ -98,7 +107,10 @@ namespace FormFabrica
                     }
                 }
 
-                richTextBox1.Text += sb.ToString();
+                richTextBox1.SelectAll();
+                richTextBox1.SelectedText = "";
+
+                richTextBox1.Text = sb.ToString();
             }
             catch (Exception ex)
             {

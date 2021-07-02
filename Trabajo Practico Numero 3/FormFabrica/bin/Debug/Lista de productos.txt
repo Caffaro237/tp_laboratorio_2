@@ -1,16 +1,9 @@
 ﻿****** NOTEBOOK ******
 Marca: Asus
 Procesador: IntelI9
-Tarjeta Grafica: RTX3080
-Cantidad de RAM: 64GB
-Cantidad de Almacenamiento: 4TB
-La pantalla tiene: 17.3 pulgadas y 240Hz
-
-****** PC ESCRITORIO ******
-Marca: MSI
-Procesador: Ryzen9
-Tarjeta Grafica: RX6800
-Cantidad de RAM: 64GB
-Cantidad de Almacenamiento: 4TB
+Tarjeta Grafica: GTX1080
+Cantidad de RAM: 8GB
+Cantidad de Almacenamiento: 240GB
+La pantalla tiene: 14 pulgadas y 60Hz
 
 
