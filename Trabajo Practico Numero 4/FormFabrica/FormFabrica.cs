@@ -29,24 +29,20 @@ namespace FormFabrica
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            /*richTextBox1.Text = "Hola";
-
-            richTextBox1.SelectAll();
-            richTextBox1.SelectedText = "";*/
-
+            /*this.BorrarRtb();
             this.LeerSQL(false);
+            this.LeerSQL(true);*/
 
-            //this.LeerSQL(true);
-            //FrmNotebooks formNotebooks = new FrmNotebooks();
-            //formNotebooks.ShowDialog();
+            FrmNotebooks formNotebooks = new FrmNotebooks();
+            formNotebooks.ShowDialog();
         }
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
             //this.LeerSQL(true);
-            //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
-            //formPCEscritorio.ShowDialog();
+
+            FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
+            formPCEscritorio.ShowDialog();
         }
 
         private void btnGuardarArchivo_Click(object sender, EventArgs e)
@@ -107,15 +103,17 @@ namespace FormFabrica
                     }
                 }
 
-                richTextBox1.SelectAll();
-                richTextBox1.SelectedText = "";
-
                 richTextBox1.Text = sb.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void BorrarRtb()
+        {
+            richTextBox1.Clear();
         }
     }
 }

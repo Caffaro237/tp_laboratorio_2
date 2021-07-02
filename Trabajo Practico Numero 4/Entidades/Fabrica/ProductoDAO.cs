@@ -11,7 +11,6 @@ namespace Entidades
     {
         private SqlConnection conexion;
         private SqlCommand comando;
-        List<Producto> lista;
 
         public ProductoDAO()
         {
@@ -19,13 +18,13 @@ namespace Entidades
             this.comando = new SqlCommand();
 
             this.comando.Connection = this.conexion;
-
-            lista = new List<Producto>();
         }
 
         public List<Producto> GetProductos(bool PCoNotebook)
         {
-            if(PCoNotebook)
+            List<Producto> lista = new List<Producto>();
+
+            if (PCoNotebook)
             {
                 comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
             }

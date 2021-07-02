@@ -229,6 +229,7 @@ namespace Entidades
             }
             catch(ProductoRepetidoExcepcion e)
             {
+                Console.WriteLine(e.Message);
             }
 
             return listaProductos;
