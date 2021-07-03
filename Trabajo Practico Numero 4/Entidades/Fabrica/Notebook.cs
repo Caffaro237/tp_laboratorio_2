@@ -27,8 +27,8 @@ namespace Entidades
         /// <param name="cantidadAlmacenamiento"></param>
         /// <param name="pulgadas"></param>
         /// <param name="hzPantalla"></param>
-        public Notebook(int id, string marca, string cpu, string tarjetaGrafica, int cantidadRAM, int cantidadAlmacenamiento, double pulgadas, int hzPantalla) 
-            : base(id, marca, cpu, tarjetaGrafica, cantidadRAM, cantidadAlmacenamiento)
+        public Notebook(string marca, string cpu, string tarjetaGrafica, int cantidadRAM, int cantidadAlmacenamiento, double pulgadas, int hzPantalla) 
+            : base(marca, cpu, tarjetaGrafica, cantidadRAM, cantidadAlmacenamiento)
         {
             this.pulgadas = pulgadas;
             this.hzPantalla = hzPantalla;

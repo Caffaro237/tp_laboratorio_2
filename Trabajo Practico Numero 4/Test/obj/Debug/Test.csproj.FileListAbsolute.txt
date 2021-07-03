@@ -18,3 +18,4 @@ D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test\obj\Debug\Test.csproj.CopyComplete
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test\obj\Debug\Test.exe
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test\obj\Debug\Test.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test\bin\Debug\Entidades.dll.config

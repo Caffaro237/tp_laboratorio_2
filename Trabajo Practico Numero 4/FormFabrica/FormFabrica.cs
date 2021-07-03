@@ -29,20 +29,27 @@ namespace FormFabrica
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            /*this.BorrarRtb();
-            this.LeerSQL(false);
-            this.LeerSQL(true);*/
 
-            FrmNotebooks formNotebooks = new FrmNotebooks();
-            formNotebooks.ShowDialog();
+            this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+
+
+
+
+            //this.BorrarRtb();
+            //this.LeerSQL(false);
+            //this.LeerSQL(true);
+
+            //FrmNotebooks formNotebooks = new FrmNotebooks();
+            //formNotebooks.ShowDialog();
         }
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
+            this.LeerSQL(false);
             //this.LeerSQL(true);
 
-            FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
-            formPCEscritorio.ShowDialog();
+            //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
+            //formPCEscritorio.ShowDialog();
         }
 
         private void btnGuardarArchivo_Click(object sender, EventArgs e)
@@ -83,10 +90,10 @@ namespace FormFabrica
 
         public void LeerSQL(bool PCoNotebook)
         {
-            listaProductosDAO = ProductoDAO.GetProductos(PCoNotebook);
-
             try
             {
+                this.listaProductosDAO = this.ProductoDAO.GetProductos(PCoNotebook);
+
                 StringBuilder sb = new StringBuilder();
 
                 foreach (Producto p in listaProductosDAO)
@@ -104,6 +111,18 @@ namespace FormFabrica
                 }
 
                 richTextBox1.Text = sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
+        {
+            try
+            {
+                this.ProductoDAO.Insert(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
             }
             catch (Exception ex)
             {

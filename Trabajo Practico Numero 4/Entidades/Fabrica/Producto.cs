@@ -10,7 +10,6 @@ namespace Entidades
     {
         #region Atributos
 
-        private int id;
         private string marca;
         private string CPU;
         private string GPU;
@@ -31,9 +30,8 @@ namespace Entidades
         /// <param name="GPU"></param>
         /// <param name="cantidadRAM"></param>
         /// <param name="cantidadAlmacenamiento"></param>
-        public Producto(int id, string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
+        public Producto(string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
         {
-            this.id = id;
             this.marca = marca;
             this.CPU = CPU;
             this.GPU = GPU;

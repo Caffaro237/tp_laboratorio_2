@@ -38,7 +38,7 @@ namespace FormFabrica
             }
             else
             {
-                Fabrica.Producto = new Notebook(1, cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla());
+                Fabrica.Producto = new Notebook(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla());
 
                 this.Close();
             }

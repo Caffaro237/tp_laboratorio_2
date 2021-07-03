@@ -30,3 +30,4 @@ D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test Unitarios\obj\Debug\Tests Unitarios.csproj.CopyComplete
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test Unitarios\obj\Debug\Test Unitarios.dll
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test Unitarios\obj\Debug\Test Unitarios.pdb
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\Test Unitarios\bin\Debug\Entidades.dll.config

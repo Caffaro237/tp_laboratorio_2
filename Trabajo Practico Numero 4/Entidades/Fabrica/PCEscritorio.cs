@@ -18,8 +18,8 @@ namespace Entidades
         /// <param name="tarjetaGrafica"></param>
         /// <param name="cantidadRAM"></param>
         /// <param name="cantidadAlmacenamiento"></param>
-        public PCEscritorio(int id, string marca, string cpu, string tarjetaGrafica, int cantidadRAM, int cantidadAlmacenamiento)
-            : base(id, marca, cpu, tarjetaGrafica, cantidadRAM, cantidadAlmacenamiento)
+        public PCEscritorio(string marca, string cpu, string tarjetaGrafica, int cantidadRAM, int cantidadAlmacenamiento)
+            : base(marca, cpu, tarjetaGrafica, cantidadRAM, cantidadAlmacenamiento)
         {
 
         }
