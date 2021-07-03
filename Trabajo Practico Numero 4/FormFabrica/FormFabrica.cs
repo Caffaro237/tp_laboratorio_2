@@ -15,29 +15,30 @@ namespace FormFabrica
     {
         List<Producto> listaProductosDAO;
         ProductoDAO ProductoDAO;
+        bool pcEscritorio = true;
+        bool notebook = false;
 
         public FrmFabrica()
         {
             InitializeComponent();
             ProductoDAO = new ProductoDAO();
+            listaProductosDAO = new List<Producto>();
         }
 
         private void FrmFabrica_Load(object sender, EventArgs e)
         {
-            List<Producto> listaProductos = new List<Producto>();
         }
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-
-            this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
 
 
 
 
             //this.BorrarRtb();
-            //this.LeerSQL(false);
-            //this.LeerSQL(true);
+            //this.LeerSQL(notebook);
+            //this.LeerSQL(pcEscritorio);
 
             //FrmNotebooks formNotebooks = new FrmNotebooks();
             //formNotebooks.ShowDialog();
@@ -45,8 +46,8 @@ namespace FormFabrica
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            this.LeerSQL(false);
-            //this.LeerSQL(true);
+            this.LeerSQL(notebook);
+            //this.LeerSQL(pcEscritorio);
 
             //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             //formPCEscritorio.ShowDialog();
@@ -92,7 +93,7 @@ namespace FormFabrica
         {
             try
             {
-                this.listaProductosDAO = this.ProductoDAO.GetProductos(PCoNotebook);
+                this.listaProductosDAO = this.ProductoDAO.GetNotebooks();
 
                 StringBuilder sb = new StringBuilder();
 
@@ -118,11 +119,18 @@ namespace FormFabrica
             }
         }
 
-        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
+        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz, bool PCoNotebook)
         {
             try
             {
-                this.ProductoDAO.Insert(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                if(PCoNotebook)
+                {
+                    this.ProductoDAO.InsertPCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
+                }
+                else
+                {
+                    this.ProductoDAO.InsertNotebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                }
             }
             catch (Exception ex)
             {

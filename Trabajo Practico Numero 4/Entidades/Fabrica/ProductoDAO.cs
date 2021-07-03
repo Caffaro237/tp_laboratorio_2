@@ -20,18 +20,11 @@ namespace Entidades
             this.comando.Connection = this.conexion;
         }
 
-        public List<Producto> GetProductos(bool PCoNotebook)
+        public List<Producto> GetNotebooks()
         {
             List<Producto> lista = new List<Producto>();
 
-            if (PCoNotebook)
-            {
-                comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
-            }
-            else
-            {
-                comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
-            }
+            comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
 
             try
             {
@@ -44,32 +37,21 @@ namespace Entidades
 
                 while (oDr.Read())
                 {
-                    //int id;
                     int RAM;
                     int almacenamiento;
                     double pulgadas;
                     int hertz;
 
-                    //int.TryParse(oDr["id"].ToString(), out id);
                     string marca = oDr["Marca"].ToString();
                     string CPU = oDr["CPU"].ToString();
                     string GPU = oDr["GPU"].ToString();
                     int.TryParse(oDr["RAM"].ToString(), out RAM);
                     int.TryParse(oDr["Almacenamiento"].ToString(), out almacenamiento);
+                    double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
+                    int.TryParse(oDr["Hertz"].ToString(), out hertz);
 
-                    if(!PCoNotebook)
-                    {
-                        double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
-                        int.TryParse(oDr["Hertz"].ToString(), out hertz);
-
-                        Fabrica.Producto = new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
-                        lista.Add(new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
-                    }
-                    else
-                    {
-                        Fabrica.Producto = new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
-                        lista.Add(new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento));
-                    }
+                    Fabrica.Producto = new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                    lista.Add(new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
 
                 }
 
@@ -83,10 +65,51 @@ namespace Entidades
             {
                 this.conexion.Close();
             }
-
         }
 
-        public void Insert(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
+        public List<Producto> GetPCEscritorio()
+        {
+            List<Producto> lista = new List<Producto>();
+
+            comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
+
+            try
+            {
+                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                {
+                    conexion.Open();
+                }
+
+                SqlDataReader oDr = comando.ExecuteReader();
+
+                while (oDr.Read())
+                {
+                    int RAM;
+                    int almacenamiento;
+
+                    string marca = oDr["Marca"].ToString();
+                    string CPU = oDr["CPU"].ToString();
+                    string GPU = oDr["GPU"].ToString();
+                    int.TryParse(oDr["RAM"].ToString(), out RAM);
+                    int.TryParse(oDr["Almacenamiento"].ToString(), out almacenamiento);
+
+                    Fabrica.Producto = new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
+                    lista.Add(new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento));
+                }
+
+                return lista;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+        }
+
+        public void InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
         {
             comando.CommandText = "INSERT INTO Notebook (Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento, @pulgadas, @hertz)";
             comando.Parameters.AddWithValue("@marca", marca);
@@ -99,16 +122,14 @@ namespace Entidades
 
             try
             {
-
                 if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
                 {
                     conexion.Open();
                 }
 
                 comando.ExecuteNonQuery();
-
             }
-            catch(ProductoRepetidoExcepcion e)
+            catch(Exception e)
             {
                 throw e;
             }
@@ -118,6 +139,47 @@ namespace Entidades
             }
 
         }
+
+        public void InsertPCEscritorio(string marca, string CPU, string GPU, int RAM, int almacenamiento)
+        {
+            comando.CommandText = "INSERT INTO PCEscritorio (Marca, CPU, GPU, RAM, Almacenamiento) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento)";
+            comando.Parameters.AddWithValue("@marca", marca);
+            comando.Parameters.AddWithValue("@cpu", CPU);
+            comando.Parameters.AddWithValue("@gpu", GPU);
+            comando.Parameters.AddWithValue("@ram", RAM);
+            comando.Parameters.AddWithValue("@almacenamiento", almacenamiento);
+
+            try
+            {
+                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                {
+                    conexion.Open();
+                }
+
+                foreach (Producto p in this.GetPCEscritorio())
+                {
+                    if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
+                    {
+                        comando.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        throw new ProductoRepetidoExcepcion();
+                    }
+                }
+
+            }
+            catch (ProductoRepetidoExcepcion e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.conexion.Close();
+            }
+
+        }
+
 
     }
 }
