@@ -11,6 +11,7 @@ namespace Entidades
     {
         private SqlConnection conexion;
         private SqlCommand comando;
+        List<Producto> listaProductos;
 
         public ProductoDAO()
         {
@@ -18,13 +19,69 @@ namespace Entidades
             this.comando = new SqlCommand();
 
             this.comando.Connection = this.conexion;
+
+            this.listaProductos = new List<Producto>();
         }
 
-        public List<Producto> GetNotebooks()
+
+        public List<Producto> EnlistadorProductos()
+        {
+            bool notebooks = false;
+            bool pcsEscrotorio = true;
+
+            foreach (Producto productoSinEnlistar in GetProductos(notebooks))
+            {
+                if(listaProductos != productoSinEnlistar)
+                {
+                    listaProductos.Add(productoSinEnlistar);
+                }
+            }
+
+            foreach (Producto productoSinEnlistar in GetProductos(pcsEscrotorio))
+            {
+                if (listaProductos != productoSinEnlistar)
+                {
+                    listaProductos.Add(productoSinEnlistar);
+                }
+            }
+
+
+
+            /*foreach (Producto productoSinEnlistar in GetProductos(false))
+            {
+                if (listaProductos.Count != 0)
+                {
+                    foreach (Producto productoEnlisatado in listaProductos)
+                    {
+                        if (productoSinEnlistar != productoEnlisatado)
+                        {
+                            listaProductos.Add(productoSinEnlistar);
+                        }
+                    }
+                }
+                else
+                {
+                    listaProductos.Add(productoSinEnlistar);
+                }
+            }*/
+
+            return listaProductos;
+        }
+
+
+
+        public List<Producto> GetProductos(bool PCoNotebook)
         {
             List<Producto> lista = new List<Producto>();
 
-            comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
+            if(PCoNotebook)
+            {
+                comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
+            }
+            else
+            {
+                comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
+            }
 
             try
             {
@@ -47,11 +104,20 @@ namespace Entidades
                     string GPU = oDr["GPU"].ToString();
                     int.TryParse(oDr["RAM"].ToString(), out RAM);
                     int.TryParse(oDr["Almacenamiento"].ToString(), out almacenamiento);
-                    double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
-                    int.TryParse(oDr["Hertz"].ToString(), out hertz);
 
-                    Fabrica.Producto = new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
-                    lista.Add(new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
+                    if(!PCoNotebook)
+                    {
+                        double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
+                        int.TryParse(oDr["Hertz"].ToString(), out hertz);
+
+                        Fabrica.Producto = new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                        lista.Add(new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
+                    }
+                    else
+                    {
+                        Fabrica.Producto = new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
+                        lista.Add(new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento));
+                    }
 
                 }
 
@@ -67,7 +133,7 @@ namespace Entidades
             }
         }
 
-        public List<Producto> GetPCEscritorio()
+        /*public List<Producto> GetPCEscritorio()
         {
             List<Producto> lista = new List<Producto>();
 
@@ -107,7 +173,7 @@ namespace Entidades
             {
                 this.conexion.Close();
             }
-        }
+        }*/
 
         public void InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
         {
@@ -156,7 +222,7 @@ namespace Entidades
                     conexion.Open();
                 }
 
-                foreach (Producto p in this.GetPCEscritorio())
+                foreach (Producto p in listaProductos) //Modificado
                 {
                     if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
                     {

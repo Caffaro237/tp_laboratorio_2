@@ -17,28 +17,26 @@ namespace FormFabrica
         ProductoDAO ProductoDAO;
         bool pcEscritorio = true;
         bool notebook = false;
+        private Hilos hilo;
 
         public FrmFabrica()
         {
             InitializeComponent();
             ProductoDAO = new ProductoDAO();
             listaProductosDAO = new List<Producto>();
+            this.hilo = new Hilos();
         }
 
         private void FrmFabrica_Load(object sender, EventArgs e)
         {
+            this.MostrarInformacion();
         }
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
+            //this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
 
-
-
-
-            //this.BorrarRtb();
-            //this.LeerSQL(notebook);
-            //this.LeerSQL(pcEscritorio);
+            
 
             //FrmNotebooks formNotebooks = new FrmNotebooks();
             //formNotebooks.ShowDialog();
@@ -46,8 +44,9 @@ namespace FormFabrica
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            this.LeerSQL(notebook);
-            //this.LeerSQL(pcEscritorio);
+            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI5.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
+
+            
 
             //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             //formPCEscritorio.ShowDialog();
@@ -89,11 +88,11 @@ namespace FormFabrica
             }
         }
 
-        public void LeerSQL(bool PCoNotebook)
+        public void MostrarInformacion()
         {
             try
             {
-                this.listaProductosDAO = this.ProductoDAO.GetNotebooks();
+                this.listaProductosDAO = this.ProductoDAO.EnlistadorProductos();
 
                 StringBuilder sb = new StringBuilder();
 
@@ -138,9 +137,5 @@ namespace FormFabrica
             }
         }
 
-        public void BorrarRtb()
-        {
-            richTextBox1.Clear();
-        }
     }
 }
