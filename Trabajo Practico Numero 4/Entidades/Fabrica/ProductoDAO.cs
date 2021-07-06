@@ -70,7 +70,7 @@ namespace Entidades
                     conexion.Open();
                 }
 
-                SqlDataReader oDr = comando.ExecuteReader();
+                SqlDataReader oDr = this.comando.ExecuteReader();
 
                 while (oDr.Read())
                 {
@@ -168,19 +168,6 @@ namespace Entidades
                 {
                     throw new ProductoRepetidoExcepcion();
                 }
-
-                /*foreach (Producto p in listaProductos) //Modificado
-                {
-                    if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
-                    {
-                        comando.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        throw new ProductoRepetidoExcepcion();
-                    }
-                }*/
-
             }
             catch (ProductoRepetidoExcepcion e)
             {
@@ -197,7 +184,7 @@ namespace Entidades
         {
             bool retorno = false;
 
-            foreach (Producto p in listaProductos) //Modificado
+            foreach (Producto p in listaProductos)
             {
                 if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
                 {
@@ -206,6 +193,7 @@ namespace Entidades
                 else
                 {
                     retorno = true;
+                    break;
                 }
             }
             
