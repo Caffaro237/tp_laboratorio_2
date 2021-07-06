@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
@@ -17,19 +18,26 @@ namespace FormFabrica
         ProductoDAO ProductoDAO;
         bool pcEscritorio = true;
         bool notebook = false;
-        private Hilos hilo;
+        private static Thread hilo;
 
         public FrmFabrica()
         {
             InitializeComponent();
             ProductoDAO = new ProductoDAO();
             listaProductosDAO = new List<Producto>();
-            this.hilo = new Hilos();
+            hilo = null;
         }
 
         private void FrmFabrica_Load(object sender, EventArgs e)
         {
-            this.MostrarInformacion();
+            Hilos.actualizarInfo += ActualizarTexto;
+
+            hilo = new Thread(Hilos.Comenzar);
+
+            hilo.Start();
+
+
+            //this.MostrarInformacion();
         }
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
@@ -44,7 +52,7 @@ namespace FormFabrica
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI5.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
+            this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
 
             
 
@@ -74,6 +82,7 @@ namespace FormFabrica
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            hilo.Abort();
         }
 
         private void FrmFabrica_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,6 +94,7 @@ namespace FormFabrica
                 MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 e.Cancel = true;
+                hilo.Abort();
             }
         }
 
@@ -110,7 +120,7 @@ namespace FormFabrica
                     }
                 }
 
-                richTextBox1.Text = sb.ToString();
+                txtInformacion.Text = sb.ToString();
             }
             catch (Exception ex)
             {
@@ -137,5 +147,17 @@ namespace FormFabrica
             }
         }
 
+        private void ActualizarTexto()
+        {
+            if (this.txtInformacion.InvokeRequired)
+            {
+                ActualizarInformacion delegado = new ActualizarInformacion(this.ActualizarTexto);
+                this.txtInformacion.Invoke(delegado);
+            }
+            else
+            {
+                this.MostrarInformacion();
+            }
+        }
     }
 }

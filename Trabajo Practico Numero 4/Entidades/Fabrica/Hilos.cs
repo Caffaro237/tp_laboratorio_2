@@ -7,31 +7,26 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public delegate void ManejarInformacion();
+    public delegate void ActualizarInformacion();
 
-    public class Hilos
+    public static class Hilos
     {
-        private Thread hilo;
-        static event ManejarInformacion actualizarInfo;
+        private static Thread hilo;
+        public static event ActualizarInformacion actualizarInfo;
 
-        public Hilos()
+        static Hilos()
         {
 
-            //hilo.Start();
         }
 
         public static void Comenzar()
         {
             while (true)
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(750);
                 actualizarInfo.Invoke();
             }
         }
 
-        private void ConsultaSQL()
-        {
-
-        }
     }
 }

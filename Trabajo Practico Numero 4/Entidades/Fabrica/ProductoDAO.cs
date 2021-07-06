@@ -45,26 +45,6 @@ namespace Entidades
                 }
             }
 
-
-
-            /*foreach (Producto productoSinEnlistar in GetProductos(false))
-            {
-                if (listaProductos.Count != 0)
-                {
-                    foreach (Producto productoEnlisatado in listaProductos)
-                    {
-                        if (productoSinEnlistar != productoEnlisatado)
-                        {
-                            listaProductos.Add(productoSinEnlistar);
-                        }
-                    }
-                }
-                else
-                {
-                    listaProductos.Add(productoSinEnlistar);
-                }
-            }*/
-
             return listaProductos;
         }
 
@@ -133,48 +113,6 @@ namespace Entidades
             }
         }
 
-        /*public List<Producto> GetPCEscritorio()
-        {
-            List<Producto> lista = new List<Producto>();
-
-            comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
-
-            try
-            {
-                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
-                {
-                    conexion.Open();
-                }
-
-                SqlDataReader oDr = comando.ExecuteReader();
-
-                while (oDr.Read())
-                {
-                    int RAM;
-                    int almacenamiento;
-
-                    string marca = oDr["Marca"].ToString();
-                    string CPU = oDr["CPU"].ToString();
-                    string GPU = oDr["GPU"].ToString();
-                    int.TryParse(oDr["RAM"].ToString(), out RAM);
-                    int.TryParse(oDr["Almacenamiento"].ToString(), out almacenamiento);
-
-                    Fabrica.Producto = new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
-                    lista.Add(new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento));
-                }
-
-                return lista;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                this.conexion.Close();
-            }
-        }*/
-
         public void InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
         {
             comando.CommandText = "INSERT INTO Notebook (Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento, @pulgadas, @hertz)";
@@ -222,7 +160,16 @@ namespace Entidades
                     conexion.Open();
                 }
 
-                foreach (Producto p in listaProductos) //Modificado
+                if(!(ProductoRepetido(marca, CPU, GPU, RAM, almacenamiento)))
+                {
+                    comando.ExecuteNonQuery();
+                }
+                else
+                {
+                    throw new ProductoRepetidoExcepcion();
+                }
+
+                /*foreach (Producto p in listaProductos) //Modificado
                 {
                     if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
                     {
@@ -232,7 +179,7 @@ namespace Entidades
                     {
                         throw new ProductoRepetidoExcepcion();
                     }
-                }
+                }*/
 
             }
             catch (ProductoRepetidoExcepcion e)
@@ -246,6 +193,24 @@ namespace Entidades
 
         }
 
+        public bool ProductoRepetido(string marca, string CPU, string GPU, int RAM, int almacenamiento)
+        {
+            bool retorno = false;
+
+            foreach (Producto p in listaProductos) //Modificado
+            {
+                if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
+                {
+                    retorno = false;
+                }
+                else
+                {
+                    retorno = true;
+                }
+            }
+            
+            return retorno;
+        }
 
     }
 }

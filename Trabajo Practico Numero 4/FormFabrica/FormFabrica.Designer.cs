@@ -35,7 +35,7 @@ namespace FormFabrica
             this.btnMostrarArchivo = new System.Windows.Forms.Button();
             this.rtbInformacion = new System.Windows.Forms.RichTextBox();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtInformacion = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnFrmNotebook
@@ -96,20 +96,20 @@ namespace FormFabrica
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // richTextBox1
+            // txtInformacion
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 82);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(431, 451);
-            this.richTextBox1.TabIndex = 18;
-            this.richTextBox1.Text = "";
+            this.txtInformacion.Location = new System.Drawing.Point(12, 82);
+            this.txtInformacion.Name = "txtInformacion";
+            this.txtInformacion.Size = new System.Drawing.Size(431, 451);
+            this.txtInformacion.TabIndex = 18;
+            this.txtInformacion.Text = "";
             // 
             // FrmFabrica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 614);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtInformacion);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.rtbInformacion);
             this.Controls.Add(this.btnMostrarArchivo);
@@ -135,7 +135,7 @@ namespace FormFabrica
         private System.Windows.Forms.Button btnMostrarArchivo;
         private System.Windows.Forms.RichTextBox rtbInformacion;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtInformacion;
     }
 }
 
