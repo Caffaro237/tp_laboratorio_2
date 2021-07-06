@@ -37,12 +37,11 @@ namespace FormFabrica
             hilo.Start();
 
 
-            //this.MostrarInformacion();
         }
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            //this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
+            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
 
             
 
@@ -94,6 +93,9 @@ namespace FormFabrica
                 MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+            else
+            {
                 hilo.Abort();
             }
         }

@@ -70,6 +70,8 @@ namespace Entidades
                     conexion.Open();
                 }
 
+                this.comando.Parameters.Clear();
+
                 SqlDataReader oDr = this.comando.ExecuteReader();
 
                 while (oDr.Read())
@@ -131,7 +133,14 @@ namespace Entidades
                     conexion.Open();
                 }
 
-                comando.ExecuteNonQuery();
+                if (!(ProductoRepetido(marca, CPU, GPU, RAM, almacenamiento)))
+                {
+                    comando.ExecuteNonQuery();
+                }
+                else
+                {
+                    throw new ProductoRepetidoExcepcion();
+                }
             }
             catch(Exception e)
             {
