@@ -194,6 +194,11 @@ namespace Entidades
         {
             bool retorno = false;
 
+            if(almacenamiento >= 1000)
+            {
+                almacenamiento = almacenamiento / 1000;
+            }
+
             foreach (Producto p in listaProductos)
             {
                 if (p.Marca != marca || p.Cpu != CPU || p.Gpu != GPU || p.CantidadRAM != RAM || p.CantidadAlmacenamiento != almacenamiento)
@@ -210,7 +215,7 @@ namespace Entidades
             return retorno;
         }
 
-        public void DeleteProducto(int id, bool PCoNotebook)
+        public void BorrarProducto(int id, bool PCoNotebook)
         {
             try
             {

@@ -53,7 +53,7 @@ namespace FormFabrica
         {
             //this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
 
-            this.ProductoDAO.DeleteProducto(16, notebook);
+            this.ProductoDAO.BorrarProducto(16, notebook);
 
             //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             //formPCEscritorio.ShowDialog();
