@@ -30,18 +30,19 @@ namespace FormFabrica
 
         private void FrmFabrica_Load(object sender, EventArgs e)
         {
+            txtInformacion.ReadOnly = true;
+            txtArchivoGuardado.ReadOnly = true;
+
             Hilos.actualizarInfo += ActualizarTexto;
 
             hilo = new Thread(Hilos.Comenzar);
 
             hilo.Start();
-
-
         }
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            this.InsertarProducto(EnumMarcas.Acer.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
+            this.InsertarProducto(EnumMarcas.Dell.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
 
             
 
@@ -51,12 +52,49 @@ namespace FormFabrica
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            //this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
+            this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
 
-            this.ProductoDAO.BorrarProducto(16, notebook);
+            
 
             //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             //formPCEscritorio.ShowDialog();
+        }
+
+        private void btnBorrarProducto_Click(object sender, EventArgs e)
+        {
+            int id;
+            bool PCoNotebook = false;
+
+            FrmBorrarProducto formBorrarProducto = new FrmBorrarProducto();
+            formBorrarProducto.ShowDialog();
+            this.btnBorrarProducto.Enabled = false;
+
+
+            int.TryParse(formBorrarProducto.txbID.Text, out id);
+
+
+            if(formBorrarProducto.rdbNotebook.Checked)
+            {
+                PCoNotebook = false;
+            }
+            else if(formBorrarProducto.rdbPCEscritorio.Checked)
+            {
+                PCoNotebook = true;
+            }
+
+            if(this.ProductoDAO.BorrarProducto(id, PCoNotebook))
+            {
+                MessageBox.Show("Producto borrado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (id != -1)
+                {
+                    MessageBox.Show("No hay producto con ese ID", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+
+            btnBorrarProducto.Enabled = true;
         }
 
         private void btnGuardarArchivo_Click(object sender, EventArgs e)
@@ -75,7 +113,7 @@ namespace FormFabrica
 
         private void btnMostrarArchivo_Click(object sender, EventArgs e)
         {
-            rtbInformacion.Text = Producto.Leer();
+            txtArchivoGuardado.Text = Producto.Leer();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -104,6 +142,8 @@ namespace FormFabrica
         {
             try
             {
+                //txtInformacion.Clear();
+
                 this.listaProductosDAO = this.ProductoDAO.EnlistadorProductos();
 
                 StringBuilder sb = new StringBuilder();
@@ -161,5 +201,6 @@ namespace FormFabrica
                 this.MostrarInformacion();
             }
         }
+
     }
 }

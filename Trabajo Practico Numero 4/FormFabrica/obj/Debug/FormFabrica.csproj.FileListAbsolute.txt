@@ -29,3 +29,4 @@ D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\FormFabrica\obj\Debug\FormFabrica.exe
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\FormFabrica\obj\Debug\FormFabrica.pdb
 D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\FormFabrica\bin\Debug\Entidades.dll.config
+D:\Datos M.2\Desktop\Facultad\Prog II - Lab II\tp_laboratorio_2\Trabajo Practico Numero 4\FormFabrica\obj\Debug\FormFabrica.FrmBorrarProducto.resources

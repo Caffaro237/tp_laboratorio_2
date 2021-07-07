@@ -11,7 +11,7 @@ namespace Entidades
     {
         private SqlConnection conexion;
         private SqlCommand comando;
-        List<Producto> listaProductos;
+        private List<Producto> listaProductos;
 
         public ProductoDAO()
         {
@@ -23,6 +23,13 @@ namespace Entidades
             this.listaProductos = new List<Producto>();
         }
 
+        public List<Producto> ListaProductos
+        {
+            get 
+            { 
+                return this.listaProductos; 
+            }
+        }
 
         public List<Producto> EnlistadorProductos()
         {
@@ -215,8 +222,10 @@ namespace Entidades
             return retorno;
         }
 
-        public void BorrarProducto(int id, bool PCoNotebook)
+        public bool BorrarProducto(int id, bool PCoNotebook)
         {
+            bool retorno = false;
+
             try
             {
                 if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
@@ -224,18 +233,32 @@ namespace Entidades
                     conexion.Open();
                 }
 
-                if (PCoNotebook)
+                foreach (Producto producto in listaProductos)
                 {
-                    comando.CommandText = "DELETE FROM PCEscritorio WHERE id = @id";
-                    comando.Parameters.AddWithValue("@id", id);
-                }
-                else
-                {
-                    comando.CommandText = "DELETE FROM Notebook WHERE id = @id";
-                    comando.Parameters.AddWithValue("@id", id);
-                }
+                    if(producto.ID == id)
+                    {
+                        if (PCoNotebook)
+                        {
+                            comando.CommandText = "DELETE FROM PCEscritorio WHERE id = @id";
+                            comando.Parameters.AddWithValue("@id", id);
+                        }
+                        else
+                        {
+                            comando.CommandText = "DELETE FROM Notebook WHERE id = @id";
+                            comando.Parameters.AddWithValue("@id", id);
+                        }
 
-                comando.ExecuteNonQuery();
+                        comando.ExecuteNonQuery();
+                        listaProductos.Clear();
+
+                        retorno = true;
+                        break;
+                    }
+                    else
+                    {
+                        retorno = false;
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -246,6 +269,8 @@ namespace Entidades
                 this.comando.Parameters.Clear();
                 this.conexion.Close();
             }
+
+            return retorno;
         }
     }
 }

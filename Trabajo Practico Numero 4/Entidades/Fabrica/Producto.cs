@@ -56,6 +56,14 @@ namespace Entidades
 
         #region Propiedades
 
+        public int ID
+        {
+            get
+            {
+                return this.id;
+            }
+        }
+
         public string Marca
         {
             get

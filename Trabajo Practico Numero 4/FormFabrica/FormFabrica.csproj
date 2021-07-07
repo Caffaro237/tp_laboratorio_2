@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorrarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrarProducto.Designer.cs">
+      <DependentUpon>BorrarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFabrica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BorrarProducto.resx">
+      <DependentUpon>BorrarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFabrica.resx">
       <DependentUpon>FormFabrica.cs</DependentUpon>
     </EmbeddedResource>
