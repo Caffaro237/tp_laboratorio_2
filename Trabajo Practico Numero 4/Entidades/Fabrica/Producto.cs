@@ -10,6 +10,7 @@ namespace Entidades
     {
         #region Atributos
 
+        private int id;
         private string marca;
         private string CPU;
         private string GPU;
@@ -25,13 +26,15 @@ namespace Entidades
         /// Unico constructor que rebibe todos los datos para el producto, inicializandolos a todos
         /// Si la cantidad de almacenamiento supera los 1000GB lo transformara a TB para mejorar su lectura
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="marca"></param>
         /// <param name="CPU"></param>
         /// <param name="GPU"></param>
         /// <param name="cantidadRAM"></param>
         /// <param name="cantidadAlmacenamiento"></param>
-        public Producto(string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
+        public Producto(int id, string marca, string CPU, string GPU, int cantidadRAM, int cantidadAlmacenamiento)
         {
+            this.id = id;
             this.marca = marca;
             this.CPU = CPU;
             this.GPU = GPU;
@@ -125,6 +128,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine($"ID: {this.id}");
             sb.AppendLine($"Marca: {this.marca}");
             sb.AppendLine($"Procesador: {this.CPU}");
             sb.AppendLine($"Tarjeta Grafica: {this.GPU}");

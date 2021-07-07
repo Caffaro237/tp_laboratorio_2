@@ -38,7 +38,7 @@ namespace FormFabrica
             }
             else
             {
-                Fabrica.Producto = new PCEscritorio(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento());
+                Fabrica.Producto = new PCEscritorio(1, cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento());
 
                 this.Close();
             }

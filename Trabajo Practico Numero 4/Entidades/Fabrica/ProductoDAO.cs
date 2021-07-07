@@ -56,11 +56,11 @@ namespace Entidades
 
             if(PCoNotebook)
             {
-                comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
+                comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento FROM PCEscritorio";
             }
             else
             {
-                comando.CommandText = "SELECT Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
+                comando.CommandText = "SELECT id, Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz FROM Notebook";
             }
 
             try
@@ -76,11 +76,13 @@ namespace Entidades
 
                 while (oDr.Read())
                 {
+                    int id;
                     int RAM;
                     int almacenamiento;
                     double pulgadas;
                     int hertz;
 
+                    int.TryParse(oDr["ID"].ToString(), out id);
                     string marca = oDr["Marca"].ToString();
                     string CPU = oDr["CPU"].ToString();
                     string GPU = oDr["GPU"].ToString();
@@ -92,13 +94,13 @@ namespace Entidades
                         double.TryParse(oDr["Pulgadas"].ToString(), out pulgadas);
                         int.TryParse(oDr["Hertz"].ToString(), out hertz);
 
-                        Fabrica.Producto = new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
-                        lista.Add(new Notebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
+                        Fabrica.Producto = new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                        lista.Add(new Notebook(id, marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz));
                     }
                     else
                     {
-                        Fabrica.Producto = new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
-                        lista.Add(new PCEscritorio(marca, CPU, GPU, RAM, almacenamiento));
+                        Fabrica.Producto = new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento);
+                        lista.Add(new PCEscritorio(id, marca, CPU, GPU, RAM, almacenamiento));
                     }
 
                 }
@@ -186,7 +188,6 @@ namespace Entidades
             {
                 this.conexion.Close();
             }
-
         }
 
         public bool ProductoRepetido(string marca, string CPU, string GPU, int RAM, int almacenamiento)
@@ -209,5 +210,37 @@ namespace Entidades
             return retorno;
         }
 
+        public void DeleteProducto(int id, bool PCoNotebook)
+        {
+            try
+            {
+                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                {
+                    conexion.Open();
+                }
+
+                if (PCoNotebook)
+                {
+                    comando.CommandText = "DELETE FROM PCEscritorio WHERE id = @id";
+                    comando.Parameters.AddWithValue("@id", id);
+                }
+                else
+                {
+                    comando.CommandText = "DELETE FROM Notebook WHERE id = @id";
+                    comando.Parameters.AddWithValue("@id", id);
+                }
+
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                this.comando.Parameters.Clear();
+                this.conexion.Close();
+            }
+        }
     }
 }
