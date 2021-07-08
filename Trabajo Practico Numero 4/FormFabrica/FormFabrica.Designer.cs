@@ -32,7 +32,6 @@ namespace FormFabrica
             this.btnFrmNotebook = new System.Windows.Forms.Button();
             this.btnGuardarArchivo = new System.Windows.Forms.Button();
             this.btnFormPCEscritorio = new System.Windows.Forms.Button();
-            this.btnMostrarArchivo = new System.Windows.Forms.Button();
             this.txtArchivoGuardado = new System.Windows.Forms.RichTextBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.txtInformacion = new System.Windows.Forms.RichTextBox();
@@ -51,11 +50,11 @@ namespace FormFabrica
             // 
             // btnGuardarArchivo
             // 
-            this.btnGuardarArchivo.Location = new System.Drawing.Point(477, 12);
+            this.btnGuardarArchivo.Location = new System.Drawing.Point(705, 12);
             this.btnGuardarArchivo.Name = "btnGuardarArchivo";
             this.btnGuardarArchivo.Size = new System.Drawing.Size(200, 64);
             this.btnGuardarArchivo.TabIndex = 1;
-            this.btnGuardarArchivo.Text = "Guardar Archivo";
+            this.btnGuardarArchivo.Text = "Guardar y Mostrar Archivo";
             this.btnGuardarArchivo.UseVisualStyleBackColor = true;
             this.btnGuardarArchivo.Click += new System.EventHandler(this.btnGuardarArchivo_Click);
             // 
@@ -69,16 +68,6 @@ namespace FormFabrica
             this.btnFormPCEscritorio.UseVisualStyleBackColor = true;
             this.btnFormPCEscritorio.Click += new System.EventHandler(this.btnFormPCEscritorio_Click);
             // 
-            // btnMostrarArchivo
-            // 
-            this.btnMostrarArchivo.Location = new System.Drawing.Point(705, 12);
-            this.btnMostrarArchivo.Name = "btnMostrarArchivo";
-            this.btnMostrarArchivo.Size = new System.Drawing.Size(200, 64);
-            this.btnMostrarArchivo.TabIndex = 15;
-            this.btnMostrarArchivo.Text = "Mostrar Archivo";
-            this.btnMostrarArchivo.UseVisualStyleBackColor = true;
-            this.btnMostrarArchivo.Click += new System.EventHandler(this.btnMostrarArchivo_Click);
-            // 
             // txtArchivoGuardado
             // 
             this.txtArchivoGuardado.Location = new System.Drawing.Point(477, 82);
@@ -89,7 +78,7 @@ namespace FormFabrica
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(112, 539);
+            this.btnCerrar.Location = new System.Drawing.Point(359, 539);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(200, 64);
             this.btnCerrar.TabIndex = 17;
@@ -107,7 +96,7 @@ namespace FormFabrica
             // 
             // btnBorrarProducto
             // 
-            this.btnBorrarProducto.Location = new System.Drawing.Point(329, 539);
+            this.btnBorrarProducto.Location = new System.Drawing.Point(477, 12);
             this.btnBorrarProducto.Name = "btnBorrarProducto";
             this.btnBorrarProducto.Size = new System.Drawing.Size(200, 64);
             this.btnBorrarProducto.TabIndex = 19;
@@ -124,7 +113,6 @@ namespace FormFabrica
             this.Controls.Add(this.txtInformacion);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.txtArchivoGuardado);
-            this.Controls.Add(this.btnMostrarArchivo);
             this.Controls.Add(this.btnFormPCEscritorio);
             this.Controls.Add(this.btnGuardarArchivo);
             this.Controls.Add(this.btnFrmNotebook);
@@ -144,7 +132,6 @@ namespace FormFabrica
         private System.Windows.Forms.Button btnFrmNotebook;
         private System.Windows.Forms.Button btnGuardarArchivo;
         private System.Windows.Forms.Button btnFormPCEscritorio;
-        private System.Windows.Forms.Button btnMostrarArchivo;
         private System.Windows.Forms.RichTextBox txtArchivoGuardado;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.RichTextBox txtInformacion;

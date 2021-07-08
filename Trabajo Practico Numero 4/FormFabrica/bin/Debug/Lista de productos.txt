@@ -49,13 +49,12 @@ Tarjeta Grafica: GTX1080
 Cantidad de RAM: 8GB
 Cantidad de Almacenamiento: 500GB
 
-****** NOTEBOOK ******
-ID: 21
-Marca: Dell
-Procesador: IntelI7
-Tarjeta Grafica: RTX2080
+****** PC ESCRITORIO ******
+ID: 11
+Marca: Asus
+Procesador: IntelI9
+Tarjeta Grafica: GTX1080
 Cantidad de RAM: 16GB
-Cantidad de Almacenamiento: 1TB
-La pantalla tiene: 17.3 pulgadas y 120Hz
+Cantidad de Almacenamiento: 500GB
 
 

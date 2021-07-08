@@ -55,8 +55,6 @@ namespace Entidades
             return listaProductos;
         }
 
-
-
         public List<Producto> GetProductos(bool PCoNotebook)
         {
             List<Producto> lista = new List<Producto>();
@@ -249,6 +247,7 @@ namespace Entidades
                         }
 
                         comando.ExecuteNonQuery();
+                        Fabrica.listaProductos.Clear();
                         listaProductos.Clear();
 
                         retorno = true;

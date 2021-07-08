@@ -13,9 +13,12 @@ namespace FormFabrica
 {
     public partial class FrmNotebooks : Form
     {
+        ProductoDAO ProductoDAO;
+
         public FrmNotebooks()
         {
             InitializeComponent();
+            ProductoDAO = new ProductoDAO();
         }
 
         private void FrmNotebooks_Load(object sender, EventArgs e)
@@ -38,9 +41,28 @@ namespace FormFabrica
             }
             else
             {
-                Fabrica.Producto = new Notebook(1, cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla());
+                this.ProductoDAO.InsertNotebook(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla());
 
                 this.Close();
+            }
+        }
+
+        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz, bool PCoNotebook)
+        {
+            try
+            {
+                if (PCoNotebook)
+                {
+                    this.ProductoDAO.InsertPCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
+                }
+                else
+                {
+                    this.ProductoDAO.InsertNotebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

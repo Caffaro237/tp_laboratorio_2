@@ -20,7 +20,6 @@ namespace FormFabrica
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.txbID.Text = "-1";
             this.Close();
         }
 
@@ -30,11 +29,12 @@ namespace FormFabrica
             {
                 this.txbID.Text = "-1";
             }
+
             this.Close();
         }
         private void FrmBorrarProducto_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.txbID.Text == "")
+            if(ActiveControl.Text != "Aceptar")
             {
                 this.txbID.Text = "-1";
             }

@@ -13,9 +13,12 @@ namespace FormFabrica
 {
     public partial class FrmPCEscritorio : Form
     {
+        private ProductoDAO ProductoDAO;
         public FrmPCEscritorio()
         {
             InitializeComponent();
+
+            ProductoDAO = new ProductoDAO();
         }
 
         private void FrmPCEscritorio_Load(object sender, EventArgs e)
@@ -38,7 +41,7 @@ namespace FormFabrica
             }
             else
             {
-                Fabrica.Producto = new PCEscritorio(1, cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento());
+                this.ProductoDAO.InsertPCEscritorio(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento());
 
                 this.Close();
             }

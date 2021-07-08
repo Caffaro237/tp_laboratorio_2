@@ -64,7 +64,6 @@ namespace Entidades
                     sb.AppendLine("****** PC ESCRITORIO ******");
                     sb.AppendLine(item.ToString());
                 }
-
             }
 
             return sb.ToString();

@@ -42,22 +42,14 @@ namespace FormFabrica
 
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            this.InsertarProducto(EnumMarcas.Dell.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120, notebook);
-
-            
-
-            //FrmNotebooks formNotebooks = new FrmNotebooks();
-            //formNotebooks.ShowDialog();
+            FrmNotebooks formNotebooks = new FrmNotebooks();
+            formNotebooks.ShowDialog();
         }
 
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            this.InsertarProducto(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 0, 0, pcEscritorio);
-
-            
-
-            //FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
-            //formPCEscritorio.ShowDialog();
+            FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
+            formPCEscritorio.ShowDialog();
         }
 
         private void btnBorrarProducto_Click(object sender, EventArgs e)
@@ -104,16 +96,12 @@ namespace FormFabrica
             {
                 Producto.Guardar();
                 MessageBox.Show("Archivo guardado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtArchivoGuardado.Text = Producto.Leer();
             }
             catch (ArchivosExcepcion ex)
             {
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        private void btnMostrarArchivo_Click(object sender, EventArgs e)
-        {
-            txtArchivoGuardado.Text = Producto.Leer();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -142,8 +130,6 @@ namespace FormFabrica
         {
             try
             {
-                //txtInformacion.Clear();
-
                 this.listaProductosDAO = this.ProductoDAO.EnlistadorProductos();
 
                 StringBuilder sb = new StringBuilder();
