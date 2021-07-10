@@ -9,6 +9,8 @@ namespace Entidades
 {
     public class Texto : IArchivo<string>
     {
+        #region Metodo Guardar
+
         /// <summary>
         /// Implementacion de la interfaz para guardar un archivo de texto
         /// </summary>
@@ -31,11 +33,15 @@ namespace Entidades
             }
             catch(Exception e)
             {
-                throw new ArchivosExcepcion(e);
+                throw new ArchivosExcepcion(e.Message);
             }
 
             return retorno;
         }
+
+        #endregion
+
+        #region Metodo Leer
 
         /// <summary>
         /// Lee un archivo de texto en una ruta determinada y lo devuelve como un string
@@ -59,10 +65,13 @@ namespace Entidades
             }
             catch(Exception e)
             {
-                throw new ArchivosExcepcion(e);
+                throw new ArchivosExcepcion(e.Message);
             }
 
             return retorno;
         }
+
+        #endregion
+
     }
 }

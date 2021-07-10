@@ -18,7 +18,7 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
-        /// Unico contrutor que inicializa la lista de productos
+        /// Unico construtor estatico que inicializa la lista de productos
         /// </summary>
         static Fabrica()
         {
@@ -30,7 +30,7 @@ namespace Entidades
         #region Propiedades
 
         /// <summary>
-        /// Propiedad de solo escritura que suma un producto a la lista de productos
+        /// Propiedad de solo escritura que sumara el producto a la lista de productos
         /// </summary>
         public static Producto Producto
         {

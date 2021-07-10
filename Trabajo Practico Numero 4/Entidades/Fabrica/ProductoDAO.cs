@@ -9,12 +9,21 @@ namespace Entidades
 {
     public class ProductoDAO
     {
+        #region Atributos
+
         private SqlConnection conexion;
         private SqlCommand comando;
         private List<Producto> listaProductos;
         bool notebook;
         bool pcEscritorio;
 
+        #endregion
+
+        #region Constructores
+
+        /// <summary>
+        /// Unico constructor que inicializa todos los atributos de esta clase
+        /// </summary>
         public ProductoDAO()
         {
             this.conexion = new SqlConnection(Properties.Settings.Default.StringConnection);
@@ -28,6 +37,13 @@ namespace Entidades
             this.notebook = false;
         }
 
+        #endregion
+
+        #region Propiedades
+
+        /// <summary>
+        /// Propiedad de solo lectura de la lista de productos
+        /// </summary>
         public List<Producto> ListaProductos
         {
             get 
@@ -36,6 +52,15 @@ namespace Entidades
             }
         }
 
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// Este metodo llamara a GetProductos para traer desde la base de datos
+        /// A todos los productos, viendo cual esta y cual no cargado en la lista
+        /// </summary>
+        /// <returns> Retorna la lista con lo productos cargados sin repetir </returns>
         public List<Producto> EnlistadorProductos()
         {
             foreach (Producto productoSinEnlistar in GetProductos(notebook))
@@ -59,6 +84,12 @@ namespace Entidades
             return listaProductos;
         }
 
+        /// <summary>
+        /// En GetProductos se conectara a la base de datos para
+        /// traer todos los productos que existan, siendo pc de escritorio o notebook
+        /// </summary>
+        /// <param name="PCoNotebook"></param>
+        /// <returns> Retorna la lista con lo productos que existan en la base de datos </returns>
         public List<Producto> GetProductos(bool PCoNotebook)
         {
             List<Producto> lista = new List<Producto>();
@@ -126,6 +157,17 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Este INSERT sera el encargado de agregar una nueva Notebook
+        /// a la base de datos, siempre y cuando no este repetido
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="CPU"></param>
+        /// <param name="GPU"></param>
+        /// <param name="RAM"></param>
+        /// <param name="almacenamiento"></param>
+        /// <param name="pulgadas"></param>
+        /// <param name="hertz"></param>
         public void InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
         {
             comando.CommandText = "INSERT INTO Notebook (Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento, @pulgadas, @hertz)";
@@ -164,6 +206,15 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Este INSERT sera el encargado de agregar una nueva PC de Escritorio
+        /// a la base de datos, siempre y cuando no este repetido
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="CPU"></param>
+        /// <param name="GPU"></param>
+        /// <param name="RAM"></param>
+        /// <param name="almacenamiento"></param>
         public void InsertPCEscritorio(string marca, string CPU, string GPU, int RAM, int almacenamiento)
         {
             comando.CommandText = "INSERT INTO PCEscritorio (Marca, CPU, GPU, RAM, Almacenamiento) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento)";
@@ -199,6 +250,15 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Este metodo se encargara de preguntar si el producto existe o no
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="CPU"></param>
+        /// <param name="GPU"></param>
+        /// <param name="RAM"></param>
+        /// <param name="almacenamiento"></param>
+        /// <returns> Retornara un true si el producto ya existe, sino retornara false </returns>
         public bool ProductoRepetido(string marca, string CPU, string GPU, int RAM, int almacenamiento)
         {
             bool retorno = false;
@@ -224,6 +284,13 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        /// BorrarProducto es el encargado de eliminar algun producto de 
+        /// la base de datos usando el DELETE
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="PCoNotebook"></param>
+        /// <returns> Retornara true si lo pudo borrar y false si no lo borro o no existe en la lista </returns>
         public bool BorrarProducto(int id, bool PCoNotebook)
         {
             bool retorno = false;
@@ -275,5 +342,8 @@ namespace Entidades
 
             return retorno;
         }
+
+        #endregion
+
     }
 }

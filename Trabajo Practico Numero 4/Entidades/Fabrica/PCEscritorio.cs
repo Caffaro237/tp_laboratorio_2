@@ -11,7 +11,7 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
-        /// Constructor sin parametros
+        /// Constructor sin parametros. Requerido por el serializer de la clase ArchivoXml.cs
         /// </summary>
         public PCEscritorio()
         {

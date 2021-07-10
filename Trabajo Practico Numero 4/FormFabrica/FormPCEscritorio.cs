@@ -13,7 +13,14 @@ namespace FormFabrica
 {
     public partial class FrmPCEscritorio : Form
     {
+        #region Atributo
+
         private ProductoDAO ProductoDAO;
+
+        #endregion
+
+        #region Constructor
+
         public FrmPCEscritorio()
         {
             InitializeComponent();
@@ -21,6 +28,15 @@ namespace FormFabrica
             ProductoDAO = new ProductoDAO();
         }
 
+        #endregion
+
+        #region Eventos
+
+        /// <summary>
+        /// Evento load que cargara en los ComboBox los datos de los enumerados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmPCEscritorio_Load(object sender, EventArgs e)
         {
             cmbMarcas.DataSource = Enum.GetValues(typeof(EnumMarcas));
@@ -28,11 +44,22 @@ namespace FormFabrica
             cmbGPU.DataSource = Enum.GetValues(typeof(EnumGPU));
         }
 
+        /// <summary>
+        /// Boton que cancela el agregado del producto y cierra el formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelarPCEscritorio_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Boton que agrega una PC de Escritorio a la base de datos
+        /// Validando que los campos no esten vacios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregarPCEscritorio_Click(object sender, EventArgs e)
         {
             if (cmbMarcas.Text == string.Empty || cmbCPU.Text == string.Empty || cmbGPU.Text == string.Empty || RAM() == 0 || Almacenamiento() == 0)
@@ -47,6 +74,14 @@ namespace FormFabrica
             }
         }
 
+        #endregion
+
+        #region Metodos 
+
+        /// <summary>
+        /// Metodo que seleccionara la RAM que este chequeada
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private int RAM()
         {
             if (rdb8GB.Checked)
@@ -69,6 +104,10 @@ namespace FormFabrica
             return 0;
         }
 
+        /// <summary>
+        /// Metodo que seleccionara el Almacenamiento que este chequeado
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private int Almacenamiento()
         {
             if (rdb240GB.Checked)
@@ -90,6 +129,8 @@ namespace FormFabrica
 
             return 0;
         }
+
+        #endregion
 
     }
 }

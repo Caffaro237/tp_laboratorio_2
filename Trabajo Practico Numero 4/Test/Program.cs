@@ -13,15 +13,15 @@ namespace Test
         {
             //Agrega productos de tipo NOTEBOOK
 
-            Fabrica.Producto = new Notebook(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
-            Fabrica.Producto = new Notebook(EnumMarcas.HP.ToString(), EnumCPU.IntelI5.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 15.6, 60);
-            Fabrica.Producto = new Notebook(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+            Fabrica.Producto = new Notebook(1, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+            Fabrica.Producto = new Notebook(2, EnumMarcas.HP.ToString(), EnumCPU.IntelI5.ToString(), EnumGPU.GTX1080.ToString(), 8, 500, 15.6, 60);
+            Fabrica.Producto = new Notebook(3, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
 
             //Agrega productos de tipo PC ESCRITORIO
 
-            Fabrica.Producto = new PCEscritorio(EnumMarcas.Acer.ToString(), EnumCPU.IntelI9.ToString(), EnumGPU.RTX3080.ToString(), 64, 4000);
-            Fabrica.Producto = new PCEscritorio(EnumMarcas.Lenovo.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 32, 2000);
-            Fabrica.Producto = new PCEscritorio(EnumMarcas.Lenovo.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 32, 2000);
+            Fabrica.Producto = new PCEscritorio(1, EnumMarcas.Acer.ToString(), EnumCPU.IntelI9.ToString(), EnumGPU.RTX3080.ToString(), 64, 4000);
+            Fabrica.Producto = new PCEscritorio(2, EnumMarcas.Lenovo.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 32, 2000);
+            Fabrica.Producto = new PCEscritorio(3, EnumMarcas.Lenovo.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 32, 2000);
 
             //Guardado de datos en un .txt
             try

@@ -13,7 +13,13 @@ namespace FormFabrica
 {
     public partial class FrmNotebooks : Form
     {
+        #region Atributo 
+
         ProductoDAO ProductoDAO;
+
+        #endregion
+
+        #region Constructor
 
         public FrmNotebooks()
         {
@@ -21,6 +27,15 @@ namespace FormFabrica
             ProductoDAO = new ProductoDAO();
         }
 
+        #endregion
+
+        #region Eventos
+
+        /// <summary>
+        /// Evento load que cargara en los ComboBox los datos de los enumerados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmNotebooks_Load(object sender, EventArgs e)
         {
             cmbMarcas.DataSource = Enum.GetValues(typeof(EnumMarcas));
@@ -28,11 +43,22 @@ namespace FormFabrica
             cmbGPU.DataSource = Enum.GetValues(typeof(EnumGPU));
         }
 
+        /// <summary>
+        /// Boton que cancela el agregado del producto y cierra el formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelarNotebooks_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Boton que agrega una notebook a la base de datos
+        /// Validando que los campos no esten vacios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgregarNotebook_Click(object sender, EventArgs e)
         {
             if(cmbMarcas.Text == string.Empty || cmbCPU.Text == string.Empty || cmbGPU.Text == string.Empty || RAM() == 0 || Almacenamiento() == 0 || Pulgadas() == 0 || HzPantalla() == 0)
@@ -47,25 +73,14 @@ namespace FormFabrica
             }
         }
 
-        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz, bool PCoNotebook)
-        {
-            try
-            {
-                if (PCoNotebook)
-                {
-                    this.ProductoDAO.InsertPCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
-                }
-                else
-                {
-                    this.ProductoDAO.InsertNotebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        #endregion
 
+        #region Metodos
+
+        /// <summary>
+        /// Metodo que seleccionara la RAM que este chequeada
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private int RAM()
         {
             if(rdb8GB.Checked)
@@ -88,6 +103,10 @@ namespace FormFabrica
             return 0;
         }
 
+        /// <summary>
+        /// Metodo que seleccionara el Almacenamiento que este chequeado
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private int Almacenamiento()
         {
             if (rdb240GB.Checked)
@@ -110,6 +129,10 @@ namespace FormFabrica
             return 0;
         }
 
+        /// <summary>
+        /// Metodo que seleccionara ls pulgadas que este chequeada
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private double Pulgadas()
         {
             if (rdb14Pulgadas.Checked)
@@ -128,6 +151,10 @@ namespace FormFabrica
             return 0;
         }
 
+        /// <summary>
+        /// Metodo que seleccionara los Hertz que este chequeado
+        /// </summary>
+        /// <returns> Retornara el valor del radioButton que este chequeado </returns>
         private int HzPantalla()
         {
             if (rdb60hz.Checked)
@@ -149,6 +176,8 @@ namespace FormFabrica
 
             return 0;
         }
+
+        #endregion
 
     }
 }

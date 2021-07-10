@@ -9,21 +9,11 @@ namespace Entidades
     public class ArchivosExcepcion : Exception
     {
         /// <summary>
-        /// Recibe un mensaje como parametro y llama a la base
+        /// Recibe un string como parametro y llama a la base que recibe un mensaje
         /// </summary>
         /// <param name="message"></param>
         public ArchivosExcepcion(string message)
-            : base(message)
-        {
-
-        }
-
-        /// <summary>
-        /// Recibe una excepcion como parametro y llama al constructor que recibe un mensaje
-        /// </summary>
-        /// <param name="innerException"></param>
-        public ArchivosExcepcion(Exception innerException)
-            : this("Se produjo un error en la lectura/escritura del archivo: " + innerException.Message)
+            : base("Se produjo un error en la lectura / escritura del archivo: " + message)
         {
 
         }

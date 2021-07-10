@@ -12,44 +12,61 @@ namespace Entidades
 {
     public static class ArchivosXml
     {
-        private static readonly string path;
-        private static readonly string pathEscritura;
-        private static readonly string pathZipeo;
+        #region Atributos
 
+        private static readonly string ruta;
+        private static readonly string rutaEscritura;
+        private static readonly string rutaZipeo;
+
+        #endregion
+
+        #region Constructores
+
+        /// <summary>
+        /// Costructor que inicializa las rutas de lectura y zipeo
+        /// Y crea las rutas si no existen
+        /// </summary>
         static ArchivosXml()
         {
-            path = Directory.GetCurrentDirectory();
-            path = Directory.GetParent(path).FullName;
-            path = Directory.GetParent(path).FullName;
-            path = Directory.GetParent(path).FullName;
+            ruta = Directory.GetCurrentDirectory();
+            ruta = Directory.GetParent(ruta).FullName;
+            ruta = Directory.GetParent(ruta).FullName;
+            ruta = Directory.GetParent(ruta).FullName;
 
-            
-
-            pathEscritura = path + @"\Archivos\NuevasComputadoras\";
-            pathZipeo = path + @"\Archivos\BackupComputadoras\";
+            rutaEscritura = ruta + @"\Archivos\NuevasComputadoras\";
+            rutaZipeo = ruta + @"\Archivos\BackupComputadoras\";
 
             CrearPaths();
         }
 
+        #endregion
 
+        #region Metodos
+
+        /// <summary>
+        /// Metodo que crea un XML por producto, notebook o pc de escritorio
+        /// </summary>
+        /// <param name="nuevoProducto"></param>
+        /// <param name="PCoNotebook"></param>
+        /// <returns></returns>
         public static bool NuevosProductos(Producto nuevoProducto, bool PCoNotebook)
         {
-            string pathCompleto = string.Empty;
+            string rutaCompleta = string.Empty;
 
             if (!(nuevoProducto is null))
             {
                 if(PCoNotebook)
                 {
-                    pathCompleto = string.Concat(pathEscritura, "PCEscritorioID-" + nuevoProducto.ID + ".xml");
+                    rutaCompleta = string.Concat(rutaEscritura, "PCEscritorioID-" + nuevoProducto.ID + ".xml");
                 }
                 else
                 {
-                    pathCompleto = string.Concat(pathEscritura, "NotebookID-" + nuevoProducto.ID + ".xml");
+                    rutaCompleta = string.Concat(rutaEscritura, "NotebookID-" + nuevoProducto.ID + ".xml");
                 }
 
                 try
                 {
-                    using (XmlTextWriter xmlWriter = new XmlTextWriter(pathCompleto, Encoding.ASCII))
+                    using (XmlTextWriter xmlWriter = new XmlTextWriter(rutaCompleta, Encoding.UTF8))
                     {
                         XmlSerializer serializer = new XmlSerializer(nuevoProducto.GetType());
                         serializer.Serialize(xmlWriter, nuevoProducto);
@@ -65,10 +82,14 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Este metodo lo que hace es generar un .zip por cada producto que encuentre
+        /// en la carpeta NuevasComputadoras. Pasandolos a la carpeta de Backup
+        /// </summary>
         public static void GenerarBackup()
         {
             string[] paths;
-            DirectoryInfo directorioElegido = new DirectoryInfo(pathEscritura);
+            DirectoryInfo directorioElegido = new DirectoryInfo(rutaEscritura);
 
             foreach (FileInfo archivoItem in directorioElegido.GetFiles())
             {
@@ -78,7 +99,7 @@ namespace Entidades
                     {
                         if (archivoItem.Extension == ".xml")
                         {
-                            using (FileStream ArchivoSteamComprimido = File.Create(archivoItem.FullName + ".zip"))
+                            using(FileStream ArchivoSteamComprimido = File.Create(archivoItem.FullName + ".zip"))
                             {
                                 using (GZipStream objAComprimir = new GZipStream(ArchivoSteamComprimido, CompressionMode.Compress))
                                 {
@@ -86,7 +107,7 @@ namespace Entidades
                                 }
 
                                 paths = ArchivoSteamComprimido.Name.Split('\\');
-                                File.Move(ArchivoSteamComprimido.Name, string.Concat(pathZipeo, paths[paths.Length - 1].ToString()));
+                                File.Move(ArchivoSteamComprimido.Name, string.Concat(rutaZipeo, paths[paths.Length - 1].ToString()));
                             }
                         }
 
@@ -94,15 +115,18 @@ namespace Entidades
                 }
                 catch (Exception e)
                 {
-
                 }
             }
         }
 
+        /// <summary>
+        /// Eliminar zip elimina los archivos comprimidos de la carpeta NuevasComputadoras
+        /// Despues de ser pasados a su propia carpeta
+        /// </summary>
         public static void EliminarZip()
         {
 
-            DirectoryInfo directorioElegido = new DirectoryInfo(pathEscritura);
+            DirectoryInfo directorioElegido = new DirectoryInfo(rutaEscritura);
             FileInfo[] files = directorioElegido.GetFiles();
 
             foreach (FileInfo archivoItem in files)
@@ -116,17 +140,23 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Metodo que crea las rutas si no existen
+        /// </summary>
         private static void CrearPaths()
         {
-            if (!Directory.Exists(pathEscritura))
+            if (!Directory.Exists(rutaEscritura))
             {
-                Directory.CreateDirectory(pathEscritura);
+                Directory.CreateDirectory(rutaEscritura);
             }
 
-            if (!Directory.Exists(pathZipeo))
+            if (!Directory.Exists(rutaZipeo))
             {
-                Directory.CreateDirectory(pathZipeo);
+                Directory.CreateDirectory(rutaZipeo);
             }
         }
+
+        #endregion
+
     }
 }

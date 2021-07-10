@@ -18,7 +18,7 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
-        /// Constructor sin parametros
+        /// Constructor sin parametros. Requerido por el serializer de la clase ArchivoXml.cs
         /// </summary>
         public Notebook()
         {
@@ -46,19 +46,33 @@ namespace Entidades
 
         #region Propiedades
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para las pulgadas de la pantalla del producto
+        /// </summary>
         public double Pulgadas
         {
             get
             {
                 return this.pulgadas;
             }
+            set
+            {
+                this.pulgadas = value;
+            }
         }
 
-        public double Hertz
+        /// <summary>
+        /// Propiedad de lectura y escritura para los hertz de la pantalla del producto
+        /// </summary>
+        public int Hertz
         {
             get
             {
                 return this.hzPantalla;
+            }
+            set
+            {
+                this.hzPantalla = value;
             }
         }
 

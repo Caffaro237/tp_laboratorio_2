@@ -13,10 +13,16 @@ namespace FormFabrica
 {
     public partial class FrmBorrarProducto : Form
     {
+        #region Constructor
+
         public FrmBorrarProducto()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Eventos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -32,6 +38,7 @@ namespace FormFabrica
 
             this.Close();
         }
+
         private void FrmBorrarProducto_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(ActiveControl.Text != "Aceptar")
@@ -40,6 +47,11 @@ namespace FormFabrica
             }
         }
 
+        /// <summary>
+        /// Evento que dara error cuando se presione una tecla que no sea un numero
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txbID_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
@@ -56,6 +68,8 @@ namespace FormFabrica
                 MessageBox.Show("Ingresar solo numeros o numeros decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
 
     }
 }

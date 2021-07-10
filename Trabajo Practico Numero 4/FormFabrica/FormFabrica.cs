@@ -14,9 +14,15 @@ namespace FormFabrica
 {
     public partial class FrmFabrica : Form
     {
+        #region Atributos
+
         List<Producto> listaProductosDAO;
         ProductoDAO ProductoDAO;
         private static Thread hilo;
+
+        #endregion
+
+        #region Costructor
 
         public FrmFabrica()
         {
@@ -26,11 +32,16 @@ namespace FormFabrica
             hilo = null;
         }
 
+        #endregion
+
+        #region Eventos
+
         private void FrmFabrica_Load(object sender, EventArgs e)
         {
             txtInformacion.ReadOnly = true;
             txtArchivoGuardado.ReadOnly = true;
 
+            //Secuencia que hara el hilo secundario
             Hilos.actualizarInfo += ActualizarTexto;
             Hilos.actualizarInfo += GenerarBackups;
             Hilos.actualizarInfo += EliminarZips;
@@ -40,18 +51,34 @@ namespace FormFabrica
             hilo.Start();
         }
 
+        /// <summary>
+        /// Boton que llamara al formulario para agregar una Notebook
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
             FrmNotebooks formNotebooks = new FrmNotebooks();
             formNotebooks.ShowDialog();
         }
 
+        /// <summary>
+        /// Boton que llamara al formulario para agregar una PC de Escritorio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
             FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
             formPCEscritorio.ShowDialog();
         }
 
+
+        /// <summary>
+        /// Boton que llamara al formulario para borrar un producto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBorrarProducto_Click(object sender, EventArgs e)
         {
             int id;
@@ -89,6 +116,11 @@ namespace FormFabrica
             btnBorrarProducto.Enabled = true;
         }
 
+        /// <summary>
+        /// Boton que guardara y mostrara el archivo en el segundo cuadro de texto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuardarArchivo_Click(object sender, EventArgs e)
         {
             //Guardado de datos en un .txt
@@ -104,9 +136,17 @@ namespace FormFabrica
             }
         }
 
+        /// <summary>
+        /// Boton que cerrara el formulario sin preguntar si desea o no cerrar
+        /// Deteniendo el hilo secundario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+
+            //Finalizacion del hilo secundario
             hilo.Abort();
         }
 
@@ -122,10 +162,18 @@ namespace FormFabrica
             }
             else
             {
+                //Finalizacion del hilo secundario
                 hilo.Abort();
             }
         }
 
+        #endregion
+
+        #region Metodos
+
+        /// <summary>
+        /// Metodo que mostrara la lista de productos en el cuadro de texto
+        /// </summary>
         public void MostrarInformacion()
         {
             try
@@ -156,16 +204,28 @@ namespace FormFabrica
             }
         }
 
+        /// <summary>
+        /// Metodo usado para el hilo secundario
+        /// que invocara a GenerarBackup de la clase Archivo.cs
+        /// </summary>
         private void GenerarBackups()
         {
             ArchivosXml.GenerarBackup();
         }
 
+        /// <summary>
+        /// Metodo usado para el hilo secundario
+        /// que invocara a EiminarZip de la clase Archivo.cs
+        /// </summary>
         private void EliminarZips()
         {
             ArchivosXml.EliminarZip();
         }
 
+        /// <summary>
+        /// Metodo usado para el hilo secundario
+        /// usando delegado invocara a MostrarInformacion
+        /// </summary>
         private void ActualizarTexto()
         {
             if (this.txtInformacion.InvokeRequired)
@@ -178,6 +238,8 @@ namespace FormFabrica
                 this.MostrarInformacion();
             }
         }
+
+        #endregion
 
     }
 }

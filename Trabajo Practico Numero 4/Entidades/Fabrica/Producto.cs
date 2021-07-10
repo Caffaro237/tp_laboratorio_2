@@ -23,7 +23,7 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
-        /// Constructor sin parametros
+        /// Constructor sin parametros. Requerido por el serializer de ArchivoXml.cs
         /// </summary>
         public Producto()
         {
@@ -64,6 +64,9 @@ namespace Entidades
 
         #region Propiedades
 
+        /// <summary>
+        /// Propiedad de solo lectura que retornara el ID
+        /// </summary>
         public int ID
         {
             get
@@ -72,6 +75,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para la marca del producto
+        /// </summary>
         public string Marca
         {
             get
@@ -84,6 +90,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para el CPU del producto
+        /// </summary>
         public string Cpu
         {
             get
@@ -96,6 +105,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para la GPU del producto
+        /// </summary>
         public string Gpu
         {
             get
@@ -108,6 +120,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para la cantidad de RAM del producto
+        /// </summary>
         public int CantidadRAM
         {
             get
@@ -120,6 +135,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura y escritura para la cantidad de almacenamiento del producto
+        /// </summary>
         public int CantidadAlmacenamiento
         {
             get
@@ -138,6 +156,7 @@ namespace Entidades
 
         /// <summary>
         /// Override del ToString para mostrar todos los datos del Producto
+        /// Teniendo en cuenta los GB o TB
         /// </summary>
         /// <returns> Retornara un string con todos los datos del producto </returns>
         public override string ToString()
