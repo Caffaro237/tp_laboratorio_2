@@ -14,11 +14,6 @@ namespace Entidades
         private static Thread hilo;
         public static event ActualizarInformacion actualizarInfo;
 
-        static Hilos()
-        {
-
-        }
-
         public static void Comenzar()
         {
             while (true)

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archivos\ArchivosXml.cs" />
     <Compile Include="Enumerados\EnumCPU.cs" />
     <Compile Include="Enumerados\EnumGPU.cs" />
     <Compile Include="Excepciones\ArchivosExcepcion.cs" />

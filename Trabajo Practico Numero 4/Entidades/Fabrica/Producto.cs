@@ -23,6 +23,14 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
+        /// Constructor sin parametros
+        /// </summary>
+        public Producto()
+        {
+
+        }
+
+        /// <summary>
         /// Unico constructor que rebibe todos los datos para el producto, inicializandolos a todos
         /// Si la cantidad de almacenamiento supera los 1000GB lo transformara a TB para mejorar su lectura
         /// </summary>

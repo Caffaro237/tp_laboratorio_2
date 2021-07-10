@@ -18,6 +18,14 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
+        /// Constructor sin parametros
+        /// </summary>
+        public Notebook()
+        {
+
+        }
+
+        /// <summary>
         /// Unico constructor que recibe todos los parametros para una notebook
         /// </summary>
         /// <param name="marca"></param>
@@ -32,6 +40,26 @@ namespace Entidades
         {
             this.pulgadas = pulgadas;
             this.hzPantalla = hzPantalla;
+        }
+
+        #endregion
+
+        #region Propiedades
+
+        public double Pulgadas
+        {
+            get
+            {
+                return this.pulgadas;
+            }
+        }
+
+        public double Hertz
+        {
+            get
+            {
+                return this.hzPantalla;
+            }
         }
 
         #endregion

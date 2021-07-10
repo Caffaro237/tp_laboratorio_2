@@ -16,8 +16,6 @@ namespace FormFabrica
     {
         List<Producto> listaProductosDAO;
         ProductoDAO ProductoDAO;
-        bool pcEscritorio = true;
-        bool notebook = false;
         private static Thread hilo;
 
         public FrmFabrica()
@@ -34,6 +32,8 @@ namespace FormFabrica
             txtArchivoGuardado.ReadOnly = true;
 
             Hilos.actualizarInfo += ActualizarTexto;
+            Hilos.actualizarInfo += GenerarBackups;
+            Hilos.actualizarInfo += EliminarZips;
 
             hilo = new Thread(Hilos.Comenzar);
 
@@ -156,23 +156,14 @@ namespace FormFabrica
             }
         }
 
-        public void InsertarProducto(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz, bool PCoNotebook)
+        private void GenerarBackups()
         {
-            try
-            {
-                if(PCoNotebook)
-                {
-                    this.ProductoDAO.InsertPCEscritorio(marca, CPU, GPU, RAM, almacenamiento);
-                }
-                else
-                {
-                    this.ProductoDAO.InsertNotebook(marca, CPU, GPU, RAM, almacenamiento, pulgadas, hertz);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ArchivosXml.GenerarBackup();
+        }
+
+        private void EliminarZips()
+        {
+            ArchivosXml.EliminarZip();
         }
 
         private void ActualizarTexto()

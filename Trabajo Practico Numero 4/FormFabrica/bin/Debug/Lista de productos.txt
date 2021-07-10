@@ -49,12 +49,4 @@ Tarjeta Grafica: GTX1080
 Cantidad de RAM: 8GB
 Cantidad de Almacenamiento: 500GB
 
-****** PC ESCRITORIO ******
-ID: 11
-Marca: Asus
-Procesador: IntelI9
-Tarjeta Grafica: GTX1080
-Cantidad de RAM: 16GB
-Cantidad de Almacenamiento: 500GB
-
 

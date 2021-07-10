@@ -12,6 +12,8 @@ namespace Entidades
         private SqlConnection conexion;
         private SqlCommand comando;
         private List<Producto> listaProductos;
+        bool notebook;
+        bool pcEscritorio;
 
         public ProductoDAO()
         {
@@ -21,6 +23,9 @@ namespace Entidades
             this.comando.Connection = this.conexion;
 
             this.listaProductos = new List<Producto>();
+
+            this.pcEscritorio = true;
+            this.notebook = false;
         }
 
         public List<Producto> ListaProductos
@@ -33,21 +38,20 @@ namespace Entidades
 
         public List<Producto> EnlistadorProductos()
         {
-            bool notebooks = false;
-            bool pcsEscrotorio = true;
-
-            foreach (Producto productoSinEnlistar in GetProductos(notebooks))
+            foreach (Producto productoSinEnlistar in GetProductos(notebook))
             {
                 if(listaProductos != productoSinEnlistar)
                 {
+                    ArchivosXml.NuevosProductos(productoSinEnlistar, notebook);
                     listaProductos.Add(productoSinEnlistar);
                 }
             }
 
-            foreach (Producto productoSinEnlistar in GetProductos(pcsEscrotorio))
+            foreach (Producto productoSinEnlistar in GetProductos(pcEscritorio))
             {
                 if (listaProductos != productoSinEnlistar)
                 {
+                    ArchivosXml.NuevosProductos(productoSinEnlistar, pcEscritorio);
                     listaProductos.Add(productoSinEnlistar);
                 }
             }

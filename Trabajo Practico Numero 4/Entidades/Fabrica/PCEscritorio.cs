@@ -11,6 +11,14 @@ namespace Entidades
         #region Constructores
 
         /// <summary>
+        /// Constructor sin parametros
+        /// </summary>
+        public PCEscritorio()
+        {
+
+        }
+
+        /// <summary>
         /// Unico constructor que recibe todos los parametros para una PC de Escritorio
         /// </summary>
         /// <param name="marca"></param>
