@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,16 +19,30 @@ namespace Entidades
         private int cantidadAlmacenamiento;
         private bool gigaOTera;
 
+        private static readonly string ruta;
+        private static readonly string rutaGuardadoLectura;
+
         #endregion
 
         #region Constructores
+
+        static Producto()
+        {
+            ruta = Directory.GetCurrentDirectory();
+            ruta = Directory.GetParent(ruta).FullName;
+            ruta = Directory.GetParent(ruta).FullName;
+            ruta = Directory.GetParent(ruta).FullName;
+
+            rutaGuardadoLectura = ruta + @"\----- Archivos Guardados -----\";
+            CrearPaths();
+        }
+
 
         /// <summary>
         /// Constructor sin parametros. Requerido por el serializer de ArchivoXml.cs
         /// </summary>
         public Producto()
         {
-
         }
 
         /// <summary>
@@ -189,7 +204,7 @@ namespace Entidades
         {
             Texto archivoTexto = new Texto();
 
-            return archivoTexto.Guardar("Lista de productos.txt", Fabrica.MostrarFabricacion());
+            return archivoTexto.Guardar(Producto.rutaGuardadoLectura + "Lista de productos.txt", Fabrica.MostrarFabricacion());
         }
 
         /// <summary>
@@ -201,9 +216,21 @@ namespace Entidades
             Texto archivoTexto = new Texto();
             string datosArchivo;
 
-            archivoTexto.Leer("Lista de productos.txt", out datosArchivo);
+            archivoTexto.Leer(Producto.rutaGuardadoLectura + "Lista de productos.txt", out datosArchivo);
 
             return datosArchivo;
+        }
+
+
+        /// <summary>
+        /// Metodo que crea la ruta si no existen
+        /// </summary>
+        private static void CrearPaths()
+        {
+            if (!Directory.Exists(rutaGuardadoLectura))
+            {
+                Directory.CreateDirectory(rutaGuardadoLectura);
+            }
         }
 
         #endregion

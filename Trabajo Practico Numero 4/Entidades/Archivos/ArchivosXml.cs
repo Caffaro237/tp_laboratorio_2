@@ -33,8 +33,8 @@ namespace Entidades
             ruta = Directory.GetParent(ruta).FullName;
             ruta = Directory.GetParent(ruta).FullName;
 
-            rutaEscritura = ruta + @"\Archivos\NuevasComputadoras\";
-            rutaZipeo = ruta + @"\Archivos\BackupComputadoras\";
+            rutaEscritura = ruta + @"\----- Archivos Guardados -----\Nuevas Computadoras\";
+            rutaZipeo = ruta + @"\----- Archivos Guardados -----\Backup Computadoras\";
 
             CrearPaths();
         }

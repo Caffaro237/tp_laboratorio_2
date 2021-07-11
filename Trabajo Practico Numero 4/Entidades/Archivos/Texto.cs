@@ -9,7 +9,7 @@ namespace Entidades
 {
     public class Texto : IArchivo<string>
     {
-        #region Metodo Guardar
+        #region Implementacion Guardar
 
         /// <summary>
         /// Implementacion de la interfaz para guardar un archivo de texto
@@ -41,7 +41,7 @@ namespace Entidades
 
         #endregion
 
-        #region Metodo Leer
+        #region Implementacion Leer
 
         /// <summary>
         /// Lee un archivo de texto en una ruta determinada y lo devuelve como un string
