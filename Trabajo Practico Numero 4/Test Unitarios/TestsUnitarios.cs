@@ -13,8 +13,8 @@ namespace Test_Unitarios
             //Arrange
             bool respuesta;
 
-            Notebook notebook = new Notebook(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
-            PCEscritorio pcEscritorio= new PCEscritorio(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000);
+            Notebook notebook = new Notebook(1, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+            PCEscritorio pcEscritorio= new PCEscritorio(2, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000);
             
 
             //Act
@@ -33,7 +33,7 @@ namespace Test_Unitarios
             Notebook notebook;
 
             //Act
-            notebook = new Notebook(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
+            notebook = new Notebook(1, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000, 17.3, 120);
 
             //Assert
             Assert.IsNotNull(notebook);
@@ -46,7 +46,7 @@ namespace Test_Unitarios
             PCEscritorio pcEscritorio;
 
             //Act
-            pcEscritorio = new PCEscritorio(EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000);
+            pcEscritorio = new PCEscritorio(1, EnumMarcas.Asus.ToString(), EnumCPU.IntelI7.ToString(), EnumGPU.RTX2080.ToString(), 16, 1000);
 
             //Assert
             Assert.IsNotNull(pcEscritorio);

@@ -83,14 +83,13 @@ namespace FormFabrica
         {
             int id;
             bool PCoNotebook = false;
-
+            
             FrmBorrarProducto formBorrarProducto = new FrmBorrarProducto();
             formBorrarProducto.ShowDialog();
+
             this.btnBorrarProducto.Enabled = false;
 
-
             int.TryParse(formBorrarProducto.txbID.Text, out id);
-
 
             if(formBorrarProducto.rdbNotebook.Checked)
             {
@@ -117,7 +116,7 @@ namespace FormFabrica
         }
 
         /// <summary>
-        /// Boton que guardara y mostrara el archivo en el segundo cuadro de texto
+        /// Boton que guardara el archivo en un txt
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -128,12 +127,21 @@ namespace FormFabrica
             {
                 Producto.Guardar();
                 MessageBox.Show("Archivo guardado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtArchivoGuardado.Text = Producto.Leer();
             }
             catch (ArchivosExcepcion ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Boton que mostrara el archivo en el segundo cuadro de texto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMostrarArchivo_Click(object sender, EventArgs e)
+        {
+            txtArchivoGuardado.Text = Producto.Leer();
         }
 
         /// <summary>
@@ -181,6 +189,10 @@ namespace FormFabrica
                 this.listaProductosDAO = this.ProductoDAO.EnlistadorProductos();
 
                 StringBuilder sb = new StringBuilder();
+
+                sb.AppendLine("******************************");
+                sb.AppendLine($"Computadoras en Stock: {this.listaProductosDAO.Count}");
+                sb.AppendLine("******************************");
 
                 foreach (Producto p in listaProductosDAO)
                 {

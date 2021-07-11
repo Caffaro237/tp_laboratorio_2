@@ -125,7 +125,6 @@ namespace Entidades
         /// </summary>
         public static void EliminarZip()
         {
-
             DirectoryInfo directorioElegido = new DirectoryInfo(rutaEscritura);
             FileInfo[] files = directorioElegido.GetFiles();
 
@@ -135,9 +134,27 @@ namespace Entidades
                 {
                     File.Delete(archivoItem.FullName);
                 }
-
             }
+        }
 
+        /// <summary>
+        /// Este metodo eliminara el producto de la carpeta de los xml
+        /// Dejando el backup .zip creado para dejar una constancia de su fabricacion
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="PCoNotebook"></param>
+        public static void EliminarProducto(int id, string PCoNotebook)
+        {
+            DirectoryInfo directorioElegido = new DirectoryInfo(rutaEscritura);
+            FileInfo[] files = directorioElegido.GetFiles();
+
+            foreach (FileInfo archivoItem in files)
+            {
+                if (archivoItem.Name.Contains(PCoNotebook) && archivoItem.Name.Contains(id.ToString()))
+                {
+                    File.Delete(archivoItem.FullName);
+                }
+            }
         }
 
         /// <summary>

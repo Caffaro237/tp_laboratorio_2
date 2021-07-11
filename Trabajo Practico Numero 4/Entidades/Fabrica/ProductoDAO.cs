@@ -310,11 +310,15 @@ namespace Entidades
                         {
                             comando.CommandText = "DELETE FROM PCEscritorio WHERE id = @id";
                             comando.Parameters.AddWithValue("@id", id);
+
+                            ArchivosXml.EliminarProducto(id, "PCEscritorioID-");
                         }
                         else
                         {
                             comando.CommandText = "DELETE FROM Notebook WHERE id = @id";
                             comando.Parameters.AddWithValue("@id", id);
+
+                            ArchivosXml.EliminarProducto(id, "NotebookID-");
                         }
 
                         comando.ExecuteNonQuery();
