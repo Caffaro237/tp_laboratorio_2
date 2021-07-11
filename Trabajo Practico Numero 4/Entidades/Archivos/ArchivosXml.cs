@@ -143,7 +143,7 @@ namespace Entidades
         /// </summary>
         /// <param name="id"></param>
         /// <param name="PCoNotebook"></param>
-        public static void EliminarProducto(int id, string PCoNotebook)
+        public static void EliminarProductoArchivo(int id, string PCoNotebook)
         {
             DirectoryInfo directorioElegido = new DirectoryInfo(rutaEscritura);
             FileInfo[] files = directorioElegido.GetFiles();

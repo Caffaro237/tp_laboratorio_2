@@ -1,4 +1,5 @@
 ﻿****** NOTEBOOK ******
+ID: 1
 Marca: Asus
 Procesador: IntelI7
 Tarjeta Grafica: RTX2080
@@ -7,6 +8,7 @@ Cantidad de Almacenamiento: 1TB
 La pantalla tiene: 17.3 pulgadas y 120Hz
 
 ****** NOTEBOOK ******
+ID: 2
 Marca: HP
 Procesador: IntelI5
 Tarjeta Grafica: GTX1080
@@ -15,6 +17,7 @@ Cantidad de Almacenamiento: 500GB
 La pantalla tiene: 15.6 pulgadas y 60Hz
 
 ****** PC ESCRITORIO ******
+ID: 1
 Marca: Acer
 Procesador: IntelI9
 Tarjeta Grafica: RTX3080
@@ -22,6 +25,7 @@ Cantidad de RAM: 64GB
 Cantidad de Almacenamiento: 4TB
 
 ****** PC ESCRITORIO ******
+ID: 2
 Marca: Lenovo
 Procesador: IntelI7
 Tarjeta Grafica: RTX2080

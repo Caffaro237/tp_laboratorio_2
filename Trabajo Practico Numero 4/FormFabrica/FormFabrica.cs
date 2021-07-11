@@ -83,36 +83,62 @@ namespace FormFabrica
         {
             int id;
             bool PCoNotebook = false;
+            bool noHayId = false;
+
+            Type tipo = typeof(Notebook);
             
             FrmBorrarProducto formBorrarProducto = new FrmBorrarProducto();
             formBorrarProducto.ShowDialog();
-
-            this.btnBorrarProducto.Enabled = false;
 
             int.TryParse(formBorrarProducto.txbID.Text, out id);
 
             if(formBorrarProducto.rdbNotebook.Checked)
             {
                 PCoNotebook = false;
+                tipo = typeof(Notebook);
             }
             else if(formBorrarProducto.rdbPCEscritorio.Checked)
             {
                 PCoNotebook = true;
+                tipo = typeof(PCEscritorio);
             }
 
-            if(this.ProductoDAO.BorrarProducto(id, PCoNotebook))
+
+            if(id != -1)
             {
-                MessageBox.Show("Producto borrado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (id != -1)
+                foreach(Producto producto in this.listaProductosDAO)
                 {
-                    MessageBox.Show("No hay producto con ese ID", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
+                    if (producto.ID == id && tipo == producto.GetType())
+                    {
+                        noHayId = true;
 
-            btnBorrarProducto.Enabled = true;
+                        if (MessageBox.Show(producto.ToString(),
+                            "Desea borrar el producto?",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question,
+                            MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        {
+                            if (this.ProductoDAO.BorrarProducto(id, PCoNotebook))
+                            {
+                                MessageBox.Show("Producto borrado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Borrado cancelado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    } 
+                }
+
+
+                if (!noHayId)
+                {
+                    MessageBox.Show("No hay producto con el ID: " + id.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
         }
 
         /// <summary>

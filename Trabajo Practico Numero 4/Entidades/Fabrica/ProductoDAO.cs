@@ -311,14 +311,14 @@ namespace Entidades
                             comando.CommandText = "DELETE FROM PCEscritorio WHERE id = @id";
                             comando.Parameters.AddWithValue("@id", id);
 
-                            ArchivosXml.EliminarProducto(id, "PCEscritorioID-");
+                            ArchivosXml.EliminarProductoArchivo(id, "PCEscritorioID-");
                         }
                         else
                         {
                             comando.CommandText = "DELETE FROM Notebook WHERE id = @id";
                             comando.Parameters.AddWithValue("@id", id);
 
-                            ArchivosXml.EliminarProducto(id, "NotebookID-");
+                            ArchivosXml.EliminarProductoArchivo(id, "NotebookID-");
                         }
 
                         comando.ExecuteNonQuery();
