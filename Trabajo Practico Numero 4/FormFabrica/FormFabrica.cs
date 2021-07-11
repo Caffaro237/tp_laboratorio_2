@@ -41,6 +41,8 @@ namespace FormFabrica
             txtInformacion.ReadOnly = true;
             txtArchivoGuardado.ReadOnly = true;
 
+            txtArchivoGuardado.Text = "Apriete el boton Mostrar Archivo para visualizarlo aqui";
+
             //Secuencia que hara el hilo secundario
             Hilos.actualizarInfo += ActualizarTexto;
             Hilos.actualizarInfo += GenerarBackups;

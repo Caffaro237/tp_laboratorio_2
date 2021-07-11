@@ -213,12 +213,17 @@ namespace Entidades
         /// <returns> Retornara un string con los datos obtenidos del archivo de texto </returns>
         public static string Leer()
         {
-            Texto archivoTexto = new Texto();
-            string datosArchivo;
+            if(File.Exists(Producto.rutaGuardadoLectura + "Lista de productos.txt"))
+            {
+                Texto archivoTexto = new Texto();
+                string datosArchivo;
 
-            archivoTexto.Leer(Producto.rutaGuardadoLectura + "Lista de productos.txt", out datosArchivo);
+                archivoTexto.Leer(Producto.rutaGuardadoLectura + "Lista de productos.txt", out datosArchivo);
 
-            return datosArchivo;
+                return datosArchivo;
+            }
+
+            return "No existe el archivo. Primero apriete Guardar Archivo";
         }
 
 
