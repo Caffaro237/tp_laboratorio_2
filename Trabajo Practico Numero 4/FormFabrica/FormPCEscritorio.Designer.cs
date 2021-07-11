@@ -29,6 +29,7 @@ namespace FormFabrica
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPCEscritorio));
             this.lblAlmacenamiento = new System.Windows.Forms.Label();
             this.lblRAM = new System.Windows.Forms.Label();
             this.lblCPU = new System.Windows.Forms.Label();
@@ -282,6 +283,7 @@ namespace FormFabrica
             this.Controls.Add(this.cmbGPU);
             this.Controls.Add(this.cmbCPU);
             this.Controls.Add(this.cmbMarcas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPCEscritorio";

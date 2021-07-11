@@ -29,6 +29,7 @@ namespace FormFabrica
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBorrarProducto));
             this.txbID = new System.Windows.Forms.TextBox();
             this.lblIdABorrar = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -132,6 +133,7 @@ namespace FormFabrica
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblIdABorrar);
             this.Controls.Add(this.txbID);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmBorrarProducto";

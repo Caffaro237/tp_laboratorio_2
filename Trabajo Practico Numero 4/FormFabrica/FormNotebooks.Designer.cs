@@ -29,6 +29,7 @@ namespace FormFabrica
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNotebooks));
             this.grbHzPantalla = new System.Windows.Forms.GroupBox();
             this.rdb240hz = new System.Windows.Forms.RadioButton();
             this.rdb144hz = new System.Windows.Forms.RadioButton();
@@ -420,6 +421,7 @@ namespace FormFabrica
             this.Controls.Add(this.cmbGPU);
             this.Controls.Add(this.cmbCPU);
             this.Controls.Add(this.cmbMarcas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNotebooks";

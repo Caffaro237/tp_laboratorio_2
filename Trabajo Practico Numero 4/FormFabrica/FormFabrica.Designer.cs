@@ -29,6 +29,7 @@ namespace FormFabrica
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFabrica));
             this.btnFrmNotebook = new System.Windows.Forms.Button();
             this.btnGuardarArchivo = new System.Windows.Forms.Button();
             this.btnFormPCEscritorio = new System.Windows.Forms.Button();
@@ -152,6 +153,7 @@ namespace FormFabrica
             this.Controls.Add(this.btnFormPCEscritorio);
             this.Controls.Add(this.btnGuardarArchivo);
             this.Controls.Add(this.btnFrmNotebook);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmFabrica";
