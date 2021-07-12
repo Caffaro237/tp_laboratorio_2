@@ -16,9 +16,10 @@ namespace FormFabrica
     {
         #region Atributos
 
-        List<Producto> listaProductosDAO;
-        ProductoDAO ProductoDAO;
+        public List<Producto> listaProductosDAO;
+        private ProductoDAO ProductoDAO;
         private static Thread hilo;
+        private int cantidadMaximaProductos;
 
         #endregion
 
@@ -27,9 +28,13 @@ namespace FormFabrica
         public FrmFabrica()
         {
             InitializeComponent();
+
             ProductoDAO = new ProductoDAO();
             listaProductosDAO = new List<Producto>();
+
             hilo = null;
+
+            cantidadMaximaProductos = 10;
         }
 
         #endregion
@@ -60,8 +65,15 @@ namespace FormFabrica
         /// <param name="e"></param>
         private void btnFrmNotebook_Click(object sender, EventArgs e)
         {
-            FrmNotebooks formNotebooks = new FrmNotebooks();
-            formNotebooks.ShowDialog();
+            if(this.listaProductosDAO.Count <= this.cantidadMaximaProductos)
+            {
+                FrmNotebooks formNotebooks = new FrmNotebooks();
+                formNotebooks.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se pueden agregar mas productos, deposito lleno");
+            }
         }
 
         /// <summary>
@@ -71,8 +83,15 @@ namespace FormFabrica
         /// <param name="e"></param>
         private void btnFormPCEscritorio_Click(object sender, EventArgs e)
         {
-            FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
-            formPCEscritorio.ShowDialog();
+            if (this.listaProductosDAO.Count <= this.cantidadMaximaProductos)
+            {
+                FrmPCEscritorio formPCEscritorio = new FrmPCEscritorio();
+                formPCEscritorio.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se pueden agregar mas productos, deposito lleno");
+            }
         }
 
 
@@ -221,6 +240,17 @@ namespace FormFabrica
                 sb.AppendLine("******************************");
                 sb.AppendLine($"Computadoras en Stock: {this.listaProductosDAO.Count}");
                 sb.AppendLine("******************************");
+
+                if(this.listaProductosDAO.Count == 9)
+                {
+                    sb.AppendLine($"Se puede agregar: {this.cantidadMaximaProductos - this.listaProductosDAO.Count} producto mas");
+                    sb.AppendLine("******************************");
+                }
+                else
+                {
+                    sb.AppendLine($"Se pueden agregar: {this.cantidadMaximaProductos - this.listaProductosDAO.Count} productos mas");
+                    sb.AppendLine("******************************\n\n");
+                }
 
                 foreach (Producto p in listaProductosDAO)
                 {

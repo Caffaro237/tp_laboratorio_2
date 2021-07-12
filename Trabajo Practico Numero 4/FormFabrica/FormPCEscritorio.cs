@@ -13,19 +13,11 @@ namespace FormFabrica
 {
     public partial class FrmPCEscritorio : Form
     {
-        #region Atributo
-
-        private ProductoDAO ProductoDAO;
-
-        #endregion
-
         #region Constructor
 
         public FrmPCEscritorio()
         {
             InitializeComponent();
-
-            ProductoDAO = new ProductoDAO();
         }
 
         #endregion
@@ -68,9 +60,14 @@ namespace FormFabrica
             }
             else
             {
-                this.ProductoDAO.InsertPCEscritorio(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento());
-
-                this.Close();
+                if(!(ProductoDAO.InsertPCEscritorio(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento())))
+                {
+                    MessageBox.Show("Producto Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    this.Close();
+                }
             }
         }
 

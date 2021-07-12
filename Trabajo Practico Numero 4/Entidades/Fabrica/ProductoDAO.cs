@@ -11,11 +11,11 @@ namespace Entidades
     {
         #region Atributos
 
-        private SqlConnection conexion;
-        private SqlCommand comando;
-        private List<Producto> listaProductos;
-        bool notebook;
-        bool pcEscritorio;
+        private static SqlConnection conexion;
+        private static SqlCommand comando;
+        private static List<Producto> listaProductos;
+        bool notebook = true;
+        bool pcEscritorio = false;
 
         #endregion
 
@@ -24,17 +24,14 @@ namespace Entidades
         /// <summary>
         /// Unico constructor que inicializa todos los atributos de esta clase
         /// </summary>
-        public ProductoDAO()
+        static ProductoDAO()
         {
-            this.conexion = new SqlConnection(Properties.Settings.Default.StringConnection);
-            this.comando = new SqlCommand();
+            conexion = new SqlConnection(Properties.Settings.Default.StringConnection);
+            comando = new SqlCommand();
 
-            this.comando.Connection = this.conexion;
+            comando.Connection = conexion;
 
-            this.listaProductos = new List<Producto>();
-
-            this.pcEscritorio = true;
-            this.notebook = false;
+            listaProductos = new List<Producto>();
         }
 
         #endregion
@@ -48,7 +45,7 @@ namespace Entidades
         {
             get 
             { 
-                return this.listaProductos; 
+                return listaProductos; 
             }
         }
 
@@ -105,14 +102,14 @@ namespace Entidades
 
             try
             {
-                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                if (conexion.State != System.Data.ConnectionState.Open && conexion.State != System.Data.ConnectionState.Connecting)
                 {
                     conexion.Open();
                 }
 
-                this.comando.Parameters.Clear();
+                comando.Parameters.Clear();
 
-                SqlDataReader oDr = this.comando.ExecuteReader();
+                SqlDataReader oDr = comando.ExecuteReader();
 
                 while (oDr.Read())
                 {
@@ -153,7 +150,7 @@ namespace Entidades
             }
             finally
             {
-                this.conexion.Close();
+                conexion.Close();
             }
         }
 
@@ -168,7 +165,7 @@ namespace Entidades
         /// <param name="almacenamiento"></param>
         /// <param name="pulgadas"></param>
         /// <param name="hertz"></param>
-        public void InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
+        public static bool InsertNotebook(string marca, string CPU, string GPU, int RAM, int almacenamiento, double pulgadas, int hertz)
         {
             comando.CommandText = "INSERT INTO Notebook (Marca, CPU, GPU, RAM, Almacenamiento, Pulgadas, Hertz) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento, @pulgadas, @hertz)";
             comando.Parameters.AddWithValue("@marca", marca);
@@ -181,7 +178,7 @@ namespace Entidades
 
             try
             {
-                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                if (conexion.State != System.Data.ConnectionState.Open && conexion.State != System.Data.ConnectionState.Connecting)
                 {
                     conexion.Open();
                 }
@@ -189,19 +186,20 @@ namespace Entidades
                 if (!(ProductoRepetido(marca, CPU, GPU, RAM, almacenamiento)))
                 {
                     comando.ExecuteNonQuery();
+                    return true;
                 }
                 else
                 {
                     throw new ProductoRepetidoExcepcion();
                 }
             }
-            catch(Exception e)
+            catch(ProductoRepetidoExcepcion e)
             {
-                throw e;
+                return false;
             }
             finally
             {
-                this.conexion.Close();
+                conexion.Close();
             }
 
         }
@@ -215,7 +213,7 @@ namespace Entidades
         /// <param name="GPU"></param>
         /// <param name="RAM"></param>
         /// <param name="almacenamiento"></param>
-        public void InsertPCEscritorio(string marca, string CPU, string GPU, int RAM, int almacenamiento)
+        public static bool InsertPCEscritorio(string marca, string CPU, string GPU, int RAM, int almacenamiento)
         {
             comando.CommandText = "INSERT INTO PCEscritorio (Marca, CPU, GPU, RAM, Almacenamiento) VALUES (@marca, @cpu, @gpu, @ram, @almacenamiento)";
             comando.Parameters.AddWithValue("@marca", marca);
@@ -226,7 +224,7 @@ namespace Entidades
 
             try
             {
-                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                if (conexion.State != System.Data.ConnectionState.Open && conexion.State != System.Data.ConnectionState.Connecting)
                 {
                     conexion.Open();
                 }
@@ -234,6 +232,7 @@ namespace Entidades
                 if(!(ProductoRepetido(marca, CPU, GPU, RAM, almacenamiento)))
                 {
                     comando.ExecuteNonQuery();
+                    return true;
                 }
                 else
                 {
@@ -242,11 +241,11 @@ namespace Entidades
             }
             catch (ProductoRepetidoExcepcion e)
             {
-                throw e;
+                return false;
             }
             finally
             {
-                this.conexion.Close();
+                conexion.Close();
             }
         }
 
@@ -259,7 +258,7 @@ namespace Entidades
         /// <param name="RAM"></param>
         /// <param name="almacenamiento"></param>
         /// <returns> Retornara un true si el producto ya existe, sino retornara false </returns>
-        public bool ProductoRepetido(string marca, string CPU, string GPU, int RAM, int almacenamiento)
+        public static bool ProductoRepetido(string marca, string CPU, string GPU, int RAM, int almacenamiento)
         {
             bool retorno = false;
 
@@ -297,7 +296,7 @@ namespace Entidades
 
             try
             {
-                if (this.conexion.State != System.Data.ConnectionState.Open && this.conexion.State != System.Data.ConnectionState.Connecting)
+                if (conexion.State != System.Data.ConnectionState.Open && conexion.State != System.Data.ConnectionState.Connecting)
                 {
                     conexion.Open();
                 }
@@ -340,8 +339,8 @@ namespace Entidades
             }
             finally
             {
-                this.comando.Parameters.Clear();
-                this.conexion.Close();
+                comando.Parameters.Clear();
+                conexion.Close();
             }
 
             return retorno;

@@ -13,18 +13,12 @@ namespace FormFabrica
 {
     public partial class FrmNotebooks : Form
     {
-        #region Atributo 
-
-        ProductoDAO ProductoDAO;
-
-        #endregion
 
         #region Constructor
 
         public FrmNotebooks()
         {
             InitializeComponent();
-            ProductoDAO = new ProductoDAO();
         }
 
         #endregion
@@ -67,9 +61,15 @@ namespace FormFabrica
             }
             else
             {
-                this.ProductoDAO.InsertNotebook(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla());
+                if(!(ProductoDAO.InsertNotebook(cmbMarcas.Text, cmbCPU.Text, cmbGPU.Text, RAM(), Almacenamiento(), Pulgadas(), HzPantalla())))
+                {
+                    MessageBox.Show("Producto Repetido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    this.Close();
+                }
 
-                this.Close();
             }
         }
 
