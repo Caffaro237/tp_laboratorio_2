@@ -305,6 +305,7 @@ namespace FormFabrica
             }
             else
             {
+                ArchivosXml.CrearPaths();
                 this.MostrarInformacion();
             }
         }

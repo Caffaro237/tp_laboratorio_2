@@ -160,7 +160,7 @@ namespace Entidades
         /// <summary>
         /// Metodo que crea las rutas si no existen
         /// </summary>
-        private static void CrearPaths()
+        public static void CrearPaths()
         {
             if (!Directory.Exists(rutaEscritura))
             {
